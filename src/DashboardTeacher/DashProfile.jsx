@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import '../CSS/DashboardTeacher.css'
 
 const DashProfile = () => {
   return (
