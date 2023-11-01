@@ -1,14 +1,14 @@
-import React from 'react'
-import About from './About'
-import Languages from './Languages'
-import Teachers from './Teachers'
-import Contact from './Contact'
-import Herosection from './Herosection'
+import React from 'react';
+import Herosection from './Herosection';
+import About from './About';
+import Languages from './Languages';
+import Teachers from './Teachers';
+import Contact from './Contact';
 
 const HomePage = () => {
   return (
     <div>
-       <Herosection/>
+      <Herosection/>
       <About/>
       <Languages/>
       <Teachers/>
