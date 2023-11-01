@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.Teachers-heading {
+    color: #4853CD;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 700;
+    margin-top: 50px;
+    font-family: Poppins;
+}
+
+.Teachers-grid {
+    display: grid;
+    justify-content: center;
+    gap: 5%;
+    margin: 2%;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.Teachers-Tablets {
+    display: flex;
+    gap: 50px;
+}
+
+.Teachers-background {
+    border-radius: 25% 75% 51% 49% / 52% 50% 50% 48%;
+    background-color: #FFD9E7;
+}
+
+.Teachers-image {
+    height: 250px;
+    width: 250px;
+}
+
+.Teachers-name {
+    text-align: center;
+    color: #4853CD;
+    margin-top: 5px;
+    font-weight: bold;
+    font-size: larger;
+    font-family: Poppins;
+}
+
+/*Tablet*/
+@media screen and (min-width:767px) and (max-width:1023px) {
+    .Teachers-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5%;
+    }
+
+    .Teachers-Tablets {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 100px;
+        margin-bottom: 20px;
+    }
+}
+
+/*Phone*/
+@media (max-width: 766px) {
+    .Teachers-grid {
+        display: grid;
+    grid-template-columns: 1fr;
+    gap: 5%;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    margin-top: 10%;
+}
+    
+
+    .Teachers-Tablets {
+        display: block;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .Teachers-background {
+        height: 300px;
+        width: 250px;
+        margin-bottom: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .Teachers-heading{
+        margin-top: 60%;
+    }
+}
