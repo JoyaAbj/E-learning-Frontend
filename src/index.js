@@ -4,12 +4,13 @@ import './index.css';
 import App from './App';
 import HeroSection from './Components/Herosection';
 import HomePage from './Components/HomePage';
+import DashboardSidebar from './DashboardTeacher/DashboardSidebar';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <HomePage />
+    <App />
   </React.StrictMode>
 );
 
