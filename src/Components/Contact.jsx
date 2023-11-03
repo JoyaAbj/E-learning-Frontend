@@ -22,7 +22,7 @@ function Contact() {
   };
 
   return (
-    <footer>
+    <footer id='Contact-us-section' >
       <div className="container-contact">
         <div className="column1">
           <p className="follow">Follow us</p>
@@ -52,7 +52,7 @@ function Contact() {
           </a>
         </div>
         <div className="column2">
-          <div className="follow">Get in touch</div>
+          <div className="get-in-touch">Get in touch</div>
           <form  method="post" className='contact-form' ref={form} onSubmit={sendEmail}>
             <div className="form-group">
               <label htmlFor="name"  className='label-contact'>Name:</label>

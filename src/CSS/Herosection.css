@@ -98,7 +98,13 @@
     height: 350px;
     width: 350px;
 }
-
+.login-btn{
+    text-decoration: none;
+    color: white;
+}
+.enroll-btn{
+    text-decoration: none;
+}
 /*Tablet*/
 @media screen and (min-width:767px) and (max-width:1023px) {
     .Mobile {

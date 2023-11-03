@@ -23,7 +23,7 @@ footer{
 
 .column1, .column3{
     display: grid;
-  gap: 50px;
+  gap: 30px;
   margin: 8%;
 }
 
@@ -35,6 +35,16 @@ font-size: 20px;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
+}
+.get-in-touch{
+    color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding-bottom: 5%;
 }
 
 .item1, .item2, .item3{
@@ -53,16 +63,15 @@ line-height: normal;
 height: 46.279px;
 }
 
-.column2{
+/* .column2{
     display: grid;
     gap: 50px;
     margin: 8%;
     margin-bottom: 31%;
-  }
+  } */
 
 .contact-form{
     display: grid;
-    gap: 15%;
 }
 
 .label-contact{

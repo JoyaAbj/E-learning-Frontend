@@ -21,7 +21,7 @@ function Teachers() {
   }, []);
 
     return (
-        <div>
+        <div id='Teacherssection' >
             <h3 className="Teachers-heading">Teachers</h3>
             <div className="Teachers-grid">
             {userdata && userdata.map((teacher)=>(
