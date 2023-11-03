@@ -31,12 +31,13 @@ function Dashprofile() {
     axios.put(`http://localhost:5000/users/teacher/${user.id}`, { language_id: languageId })
       .then((response) => {
         if (response.status === 201) {
+          console.log(response.setSelectedLanguageId)
           setSelectedLanguageId(languageId);
           // Save the selected language ID to localStorage
           localStorage.setItem('selectedLanguageId', languageId);
           // If the selected language is French (ID 18), set it as the default language
           if (languageId === 18) {
-            setDefaultLanguageId(18);
+            setDefaultLanguageId();
           }
         } else {
           console.error("Language update failed");
@@ -50,11 +51,12 @@ function Dashprofile() {
 
 
   const fetchlanguage = (id) => {
+    console.log(id)
     axios.get(`http://localhost:5000/languages/getbyTeacherId/${id}`)
     .then((response) => {
-        console.log(response.data.data)
+        
         setLanguageName(response?.data?.data[0]?.language_name);
-        localStorage.setItem('language_id', response.data.data[0].language_id)
+        localStorage.setItem('languageId', response.data.data[0].language_id)
         
       })
       .catch((error) => {
@@ -64,8 +66,6 @@ function Dashprofile() {
 
   useEffect(() => {
     fetchUserData();
-   
-    
   }, []);
 
 

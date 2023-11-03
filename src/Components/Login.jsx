@@ -35,6 +35,7 @@ function Login({ setUserRole }) {
         }
         if (data.id){
           localStorage.setItem('userId', data.id);
+          localStorage.setItem('languageId', data.id);
         }
          else {
           alert('Invalid email or password');
