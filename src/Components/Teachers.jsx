@@ -1,12 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../CSS/Teachers.css';
+import axios from 'axios';
 
-const Teachers = () => {
-  return (
-    <div>
-      <h1>Teachers</h1>
-    </div>
-  )
+function Teachers() {
+
+    const [userdata, setUserData] = useState([]);
+
+    const fetchteachersData = () => {
+    axios.get('http://localhost:5000/users/getAll/teacher')
+      .then((response) => {
+       console.log(response.data.data);
+        setUserData(response.data.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  useEffect(() => {
+    fetchteachersData();
+  }, []);
+
+    return (
+        <div id='Teacherssection' >
+            <h3 className="Teachers-heading">Teachers</h3>
+            <div className="Teachers-grid">
+            {userdata && userdata.map((teacher)=>(
+                <div key={teacher.id}>
+                    <div className='Teachers-background'>
+                
+                        <img className="Teachers-image" src={teacher.profile_url} />
+                        <p className='Teachers-name'>{teacher.name}</p>
+                    </div>
+                    </div>
+                    ))}
+                    
+                </div>
+        </div>
+    );
 }
 
-export default Teachers
+export default Teachers;

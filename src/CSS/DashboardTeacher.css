@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+    
+.teachdash-maincontainer{
+    display: flex;
+    gap: 3%;
+    height: fit-content;
+}
+
+/*Sidebar*/
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 0px 0px 20px 20px;
+background: linear-gradient(283deg, #4853CD -8.86%, rgba(72, 83, 205, 0.84) 53.99%, rgba(72, 83, 205, 0.00) 128.61%);
+
+
+    padding-top: 20px;
+}
+.sidebar a {
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+.sidebar a:hover {
+    background: rgba(72, 83, 205, 0.88);
+
+
+}
+.dropdown-content a:hover{
+    background: rgba(72, 83, 205, 0.88);
+
+
+}
+
+.dropdown-content {
+    display: block;
+    padding-left: 25px;
+}
+
+
+.active {
+    background: rgba(72, 83, 205, 0.88);
+}
+
+
+.Content {
+    margin-left: 250px; 
+    padding: 20px;
+}
+
+.profile-row{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    align-content: center;
+    flex-direction: row;
+    gap: 5%;
+}
+/*level-lesson*/
+.dropdown-level{
+    color: #4853CD;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+border-radius: 15px;
+background: #FFD9E7;
+border: none;
+padding: 1%;
+margin-top: 1%;
+}
+.lessons{
+    border-radius: 20px;
+    width: 100%;
+    margin-top: 2%;
+    display: flex;
+    background: rgba(72, 83, 205, 0.54);
+    width: 1062px;
+    
+    
+}
+.lesson-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2%;
+    flex-direction: column;
+    align-items: center;
+}
+.line1{
+    background: #4853CD;
+    height: 3px; 
+    width: 100%; 
+    position: relative;
+    margin: 2%;
+}
+.lesson-form{
+    width: 1047px;
+
+flex-shrink: 0;
+border-radius: 20px;
+background: rgba(255, 217, 231, 0.29);
+padding: 1%;
+}
+
+.input-lesson{
+    background: rgba(255, 217, 231, 0.29);
+    border-radius: 20px;
+    padding: 1%;
+    border: none;
+}
+
+label{
+    color: #573b8a;
+    font-size: 25px;
+    justify-content: flex-start;
+    display: flex;
+    margin: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+    align-items: baseline;
+}
+/*assessment*/
+.assessment-div{
+    display: flex;
+    flex-direction: column;
+}
+
+/*attendance*/
+.attendance{
+    display: flex;
+    flex-direction: column;
+}
+th {
+    background-color: #4853CD;
+    color: #fff;
+    padding: 0.5em 1em;
+}
+
+td {
+    border-top: 2px solid #4853cd8c;
+    padding: 1.5em 2em;
+}
+
+input {
+    cursor: pointer;
+}
+
+.svg-teach-dash{
+    width: 50px;
+height: 40px;
+margin-top: 32px;
+cursor: pointer;
+}
+
+.elements{
+    display: flex;
+    align-items: baseline;;
+    justify-content: flex-start;
+    margin-left: 10px;
+}
