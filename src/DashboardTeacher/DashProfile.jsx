@@ -10,9 +10,10 @@ function Dashprofile() {
   const [selectedLanguageName, setSelectedLanguageName] = useState("");
   const [defaultLanguageId, setDefaultLanguageId] = useState(17); // Set the default language ID to English (ID 17)
   
+  
 
   const fetchUserData = () => {
-    axios.get('http://localhost:5000/users/get/30')
+    axios.get(`http://localhost:5000/users/get/${localStorage.getItem('userId')}`)
       .then((response) => {
         console.log(response.data);
         setUser(response.data);

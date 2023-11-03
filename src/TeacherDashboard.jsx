@@ -1,12 +1,12 @@
 import React from 'react'
 import DashboardSidebar from './DashboardTeacher/DashboardSidebar'
 
-const DashboardTeacher = () => {
+const TeacherDashboard = () => {
   return (
     <div>
-      <DashboardSidebar/>
+    <DashboardSidebar/>
     </div>
   )
 }
 
-export default DashboardTeacher
+export default TeacherDashboard

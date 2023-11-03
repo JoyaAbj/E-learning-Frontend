@@ -16,14 +16,14 @@ function Herosection() {
                     <div className="Header-Navbar">
                         <div className="Header-Logo">Ridge Polyglot</div>
                         <div className="Nav-Desktop">
-                            <a className="Nav-Title" href="#Languages">Languages</a>
-                            <a className="Nav-Title" href="#About">About</a>
-                            <a className="Nav-Title" href="#Teachers">Teachers</a>
-                            <a className="Nav-Title" href="#Contact us">Contact us</a>
+                            <a className="Nav-Title" href="#Aboutsection">About</a>
+                            <a className="Nav-Title" href="#Languagessection">Languages</a>
+                            <a className="Nav-Title" href="#Teacherssection">Teachers</a>
+                            <a className="Nav-Title" href="#Contact-us-section">Contact us</a>
                         </div>
-                        <div className="Header-login">Log in
-                
-            </div>
+                        <div className="Header-login">
+                        <Link  className="login-btn" to="/Login">Log in</Link>
+                        </div>
                     </div>
                     <div className="Header-Hero">
                         <div className="Hero-description">
@@ -35,7 +35,9 @@ function Herosection() {
                                 with our language programs. <br /> <br />
                                 Welcome to a place where languages unite us!
                             </p>
-                            <button className="Header-enroll">Enroll now!</button>
+                            <Link  className='enroll-btn' to="/Login">
+                            <button className="Header-enroll"> Enroll now!</button>
+                            </Link>
                         </div>
                         <div>
                             <img className="Header-image" src="Hero-section.png" alt="" />
@@ -51,10 +53,10 @@ function Herosection() {
                             ☰
                         </button>
                         <div className={`Mobile-Nav ${isBurgerActive ? 'active' : ''}`}>
-                            <a className="Mobile-Nav-Title" href="#Languages">Languages</a>
-                            <a className="Mobile-Nav-Title" href="#About">About</a>
-                            <a className="Mobile-Nav-Title" href="#Teachers">Teachers</a>
-                            <a className="Mobile-Nav-Title" href="#Contact us">Contact us</a>
+                            <a className="Mobile-Nav-Title" href="/About">About</a>
+                            <a className="Mobile-Nav-Title" href="/Languages">Languages</a>
+                            <a className="Mobile-Nav-Title" href="/Teachers">Teachers</a>
+                            <a className="Mobile-Nav-Title" href="/Contact us">Contact us</a>
                         </div>
                         <div className="Mobile-Logo">Ridge Polyglot</div>
                         <button className="Mobile-Login">Log in</button>

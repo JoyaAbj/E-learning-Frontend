@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import '../CSS/Contact.css'; 
 
 function Contact() {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm(
+      'service_25fbzyi', 
+      'template_bqmuj8e', 
+      form.current, 
+      'FLSiIE_cf8fw1muNl')
+
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+  };
 
   return (
-    <footer>
+    <footer id='Contact-us-section' >
       <div className="container-contact">
         <div className="column1">
           <p className="follow">Follow us</p>
@@ -34,8 +52,8 @@ function Contact() {
           </a>
         </div>
         <div className="column2">
-          <div className="follow">Get in touch</div>
-          <form action="process_form.php" method="post" className='contact-form'>
+          <div className="get-in-touch">Get in touch</div>
+          <form  method="post" className='contact-form' ref={form} onSubmit={sendEmail}>
             <div className="form-group">
               <label htmlFor="name"  className='label-contact'>Name:</label>
               <div className="input-container">

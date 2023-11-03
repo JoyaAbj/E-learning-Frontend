@@ -20,7 +20,7 @@ const Languages = () => {
       }, []);
 
   return (
-    <div>
+    <div id='Languagessection' >
       <h1 className="language-title">Languages</h1>
     <div className="language-container">
       {languagesdata && languagesdata.map((languages) => (
