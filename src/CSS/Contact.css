@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+footer{
+    border-radius: 80px 80px 0px 0px;
+    background: linear-gradient(110deg, #4853CD -7.71%,
+ rgba(72, 83, 205, 0.84) 43.03%, 
+ rgba(72, 83, 205, 0.00) 103.27%);
+}
+.container-contact{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-items: center;
+    align-items: center;
+    padding: 2%;
+}
+
+.column1, .column3{
+    display: grid;
+  gap: 30px;
+  margin: 8%;
+}
+
+.follow{
+    color: #FFF;
+text-align: center;
+font-family: Poppins;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.get-in-touch{
+    color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding-bottom: 5%;
+}
+
+.item1, .item2, .item3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.27);
+    backdrop-filter: blur(0px);
+    padding: 20%;
+}
+
+.imgg1{
+    width: 28.298px;
+height: 46.279px;
+}
+
+/* .column2{
+    display: grid;
+    gap: 50px;
+    margin: 8%;
+    margin-bottom: 31%;
+  } */
+
+.contact-form{
+    display: grid;
+}
+
+.label-contact{
+    color: #FFF;
+text-align: center;
+font-family: Poppins;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.input-container{
+    background: transparent;
+}
+
+.input-contact{
+    border: none; 
+    border-bottom: 2px solid pink; 
+    outline: none;
+    background-color: transparent;
+}
+
+.submit-button-contact{
+    color: #4853CD;
+text-align: center;
+font-family: Poppins;
+font-size: 18px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+border-radius: 20px;
+background: #FFD9E7;
+box-shadow: 6px 6px 4px 0px rgba(0, 0, 0, 0.27);
+border: none;
+padding: 5%;
+}
+
+.Mention-amico{
+    width: 100%;
+}
+
+/*Tablet*/
+@media screen and (min-width:767px) and (max-width:1023px) {
+    .container-contact{
+        margin: 5%;
+    }
+    .Mention-amico{
+        width: 300px;
+    }
+    .column2{
+        margin-bottom: 72%;
+    }
+}
+
+/*Phone*/
+@media (max-width: 766px) {
+    .Mention-amico{
+        display: none;
+    }
+    .container-contact{
+        display: flex;
+    }
+}
