@@ -13,17 +13,34 @@ function StartLearning({ userId }) {
   const [lessons, setLessons] = useState([]);
   const [assessmentDetails, setAssessmentDetails] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
   useEffect(() => {
-    // Fetch available languages and populate the language dropdown
-    axios
-      .get('http://localhost:5000/enroll/get/languages')
-      .then((response) => {
-        setLanguages(response.data.languages);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+    // if (userId && selectedLanguage) {
+    //   console.log(userId)
+      // Fetch enrolled levels for the selected language and user
+      axios.get(`http://localhost:5000/enroll/get/languagebystudent/${localStorage.getItem('userId')};`)
+    .then((response) => {
+      console.log(response.data.data)
+      setEnrolledLevels(response.data.data);
+      setLanguages(response.data.data)
+    })
+    .catch((error) => {
+      console.error('Error fetching enrolled levels:', error);
+    });
+  // }
+}, [userId, selectedLanguage]);
+console.log(languages)
+
+const handleLanguageChange = (event) => {
+  const selectedLanguageId = event.target.value;
+  setSelectedLanguage(selectedLanguageId);
+};
+
+  const handleLevelChange = (event) => {
+    const selectedOption = event.target.options[event.target.selectedIndex];
+    setSelectedLevel(event.target.value);
+    setSelectedLevelName(selectedOption.text);
+  };
 
   // Fetch enrolled levels when userId changes
   useEffect(() => {
@@ -41,20 +58,11 @@ function StartLearning({ userId }) {
     }
   }, [userId, selectedLanguage]);
 
-  const handleLanguageChange = (event) => {
-    const selectedLanguageId = event.target.value;
-    setSelectedLanguage(selectedLanguageId);
-  };
 
-  const handleLevelChange = (event) => {
-    const selectedOption = event.target.options[event.target.selectedIndex];
-    setSelectedLevel(event.target.value);
-    setSelectedLevelName(selectedOption.text);
-  };
-
+  
   const handleStartLearning = () => {
     axios
-      .get(`http://localhost:5000/students/lessons?language=${selectedLanguage}&level=${selectedLevelName}`)
+      .get(`http://localhost:5000/enroll/get/lessons?language=${selectedLanguage}&level=${selectedLevelName}`)
       .then((response) => {
         setLessons(response.data);
       })
@@ -69,7 +77,7 @@ function StartLearning({ userId }) {
   const handleStartAssessment = (lessonId) => {
     // Make an API request to fetch the assessment details for the selected lesson
     axios
-      .get(`http://localhost:5000/students/fetch-assessment/${userId}/${lessonId}`)
+      .get(`http://localhost:5000/enroll/get/fetch-assessment/${userId}/${lessonId}`)
       .then((response) => {
         // Handle the response and show the assessment details to the user
         const assessmentDetails = response.data.data;
@@ -130,11 +138,11 @@ function StartLearning({ userId }) {
 
   return (
     <div className='start-learning-div'>
-      <h2>Language and Level Selection</h2>
+      <h2>My courses</h2>
       <label htmlFor="language">Select Language:</label>
       <select id="language" name="language" value={selectedLanguage} onChange={handleLanguageChange}>
         <option value="">Select a Language</option>
-        {languages.map((language) => (
+        {languages && languages.map((language) => (
           <option key={language.language_id} value={language.language_id}>
             {language.language_name}
           </option>

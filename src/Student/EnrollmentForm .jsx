@@ -34,7 +34,7 @@ axios.get(`http://localhost:5000/enroll/get/levels?language_id=${selectedLanguag
     console.error(error);
   });
 }
-
+console.log(levelId)
   const handleEnroll = () => {
       const studentId = localStorage.getItem("userId")
       console.log(studentId)
