@@ -100,64 +100,66 @@ function Login({ setUserRole }) {
       <div className="signup">
         <form>
         <label className="signup_login" htmlFor="chk" aria-hidden="true">Sign up</label>
-      <input
+      <input className='input-class'
         type="text"
         placeholder="Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <input
+      <input className='input-class'
         type="email"
         placeholder="Email"
         value={signupEmail}
         onChange={(e) => setSignupEmail(e.target.value)}
       />
-      <input
+      <input className='input-class' 
         type="password"
         placeholder="Password"
         value={signupPassword}
         onChange={(e) => setSignupPassword(e.target.value)}
       />
-      <input
+      <input className='input-class' 
         type="password"
         placeholder="Confirm Password"
         value={confirmPassword}
         onChange={(e) => setConfirmPassword(e.target.value)}
       />
-      <select
+      <select className='select'
         value={signupRole}
         onChange={(e) => setSignupRole(e.target.value)}
       >
-        <option value="">Select Role</option>
-        <option value="student">Student</option>
-        <option value="teacher">Teacher</option>
-        <option value="admin">Admin</option>
+        <option className='role-option'  value="">Select Role</option>
+        <option className='role-option' value="student">Student</option>
+        <option className='role-option' value="teacher">Teacher</option>
+        <option className='role-option' value="admin">Admin</option>
       </select>
-      <button  onClick={handleSignup}>Sign Up</button>
+      <button  className='signup-btn' onClick={handleSignup}>Sign Up</button>
 
       {message && <p>{message}</p>}
       </form>
       </div>
       <div className="login">
       <label className="signup_login" htmlFor="chk" aria-hidden="true">Login</label>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email:
+      <form className='login-form' onSubmit={handleSubmit}>
+        {/* <label className='email-login'> */}
+         
           <input className="email_input"
+          placeholder='Email'
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </label>
-        <label>
-          Password:
+        {/* </label> */}
+        {/* <label className='email-login'> */}
+        
           <input className="email_input"
+          placeholder='Password'
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-        </label>
-        <button type="submit">Submit</button>
+        {/* </label> */}
+        <button className='button-lgn' type="submit">Submit</button>
       </form>
       </div>
       </div>
