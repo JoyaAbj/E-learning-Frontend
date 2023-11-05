@@ -1,84 +1,86 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
-.language-title{
+.language-title {
     color: #4853CD;
     text-align: center;
     font-size: 50px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    margin: 5% 1%;
 }
 
-.language-container{
+.language-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 5%;
-    margin: 2%;
+    gap: 2%;
+    margin: 1%;
 }
 
-.language-box{
+.language-box {
     border-radius: 20px;
-background: linear-gradient(110deg, #4853CD -7.71%, rgba(72, 83, 205, 0.84) 43.03%, rgba(72, 83, 205, 0.00) 103.27%);
+    background: linear-gradient(110deg, #4853CD -7.71%, rgba(72, 83, 205, 0.84) 43.03%, rgba(72, 83, 205, 0.00) 103.27%);
 
 
 }
 
-.language-img{
+.language-img {
     width: 310px;
-height: 250px;
-padding: 10%;
-border-radius: 50px;
+    height: 250px;
+    padding: 10%;
+    border-radius: 50px;
 }
 
-.language-name{
+.language-name {
     color: #FFF;
 
-text-align: center;
-font-size: 40px;
-font-style: normal;
-font-weight: 800;
-line-height: normal;
-padding-bottom: 2%;
+    text-align: center;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    padding-bottom: 2%;
 }
 
-@media screen and (min-width:767px) and (max-width:1023px){
-    .language-container{
+@media screen and (min-width:767px) and (max-width:1023px) {
+    .language-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 5%;
-    }  
+    }
 
-    .language-box{
+    .language-box {
         display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    padding: 5%;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        padding: 5%;
     }
 
 }
 
-@media screen and (max-width: 766px){
-    .language-container{
+@media screen and (max-width: 766px) {
+    .language-container {
         display: grid;
-    grid-template-columns: 1fr;
-    gap: 5%; 
-    justify-content: center;
-    }  
+        grid-template-columns: 1fr;
+        gap: 5%;
+        justify-content: center;
+    }
 
-    .language-box{
+    .language-box {
         display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    padding: 5%;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        padding: 5%;
     }
 }
