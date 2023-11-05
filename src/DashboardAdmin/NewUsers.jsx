@@ -38,20 +38,23 @@ const UserTable = ({ users, role }) => {
     }
   };
 
+  
+  // const filteredUsers = users.filter(user => user.role === role);
+
   return (
-    <table>
-      <thead>
+    <table className='admin-table'>
+      <thead className='admin-thead'>
         <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Actions</th>
+          <th className='admin-table-th'>Name</th>
+          <th className='admin-table-th'>Email</th>
+          <th className='admin-table-th'>Actions</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className='admin-thead'>
         {users.length > 0 ? (
           users.map((user) => (
             <tr key={user.id}>
-              <td>
+              <td className='user-name'>
                 {editUserId === user.id ? (
                   <input
                     type="text"
@@ -62,7 +65,7 @@ const UserTable = ({ users, role }) => {
                   user.name
                 )}
               </td>
-              <td>
+              <td className='user-name'>
                 {editUserId === user.id ? (
                   <input
                     type="text"
@@ -73,9 +76,9 @@ const UserTable = ({ users, role }) => {
                   user.email
                 )}
               </td>
-              <td>
-                <button onClick={() => deleteUser(user.id)}>Delete</button>
-                <button onClick={() => updateUser(user.id)}>
+              <td className='user-name'>
+                <button className='edit-delete-btn-admin' onClick={() => deleteUser(user.id)}>Delete</button>
+                <button className='edit-delete-btn-admin' onClick={() => updateUser(user.id)}>
                   {editUserId === user.id ? 'Save' : 'Edit'}
                 </button>
               </td>
@@ -97,7 +100,7 @@ const NewUsers = () => {
 
   const fetchUsersByRole = async (role, usersState) => {
     try {
-      const response = await axios.get(`http://localhost:5000/users/getAll`);
+      const response = await axios.get(`http://localhost:5000/users/getAll/`);
       const users = response.data;
       usersState(users);
       return users;

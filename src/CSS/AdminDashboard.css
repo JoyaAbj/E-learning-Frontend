@@ -2,7 +2,7 @@
     border-radius: 20px;
 background: rgba(72, 83, 205, 0.54);
 width: 100%;
-height: 191px;
+height: 220px;
 padding: 1%;
 }
 
@@ -32,16 +32,18 @@ padding: 1%;
 
 .create-user-button{
     color: #4853CD;
-text-align: center;
-font-family: Poppins;
-font-size: 25px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-border-radius: 20px;
-background: #FFD9E7;
-margin-left: 43%;
-border: none;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-radius: 20px;
+    background: #FFD9E7;
+    margin-left: 43%;
+    border: none;
+    cursor: pointer;
+    padding: 1%;
 }
 
 .users-admin{
@@ -65,4 +67,44 @@ line-height: normal;
 border-radius: 20px;
 background: #FFD9E7;
 border: none;
+}
+
+.admin-table-th{
+    color: #4853CD;
+text-align: center;
+font-family: Poppins;
+font-size: 40px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.user-name{
+    color: #4853CD;
+text-align: center;
+font-family: Poppins;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.edit-delete-btn-admin{
+    border-radius: 20px;
+    background: #FFD9E7;
+    color: #4853CD;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: none;
+    width: fit-content;
+    padding: 3%;
+    margin: 12px;
+}
+
+.admin-table{
+    margin-left: 25%;
 }

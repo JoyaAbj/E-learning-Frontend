@@ -45,7 +45,6 @@ const Admin = () => {
     };
     return (
         <div>
-            <h1>Admin Dashboard</h1>
             <div className="create-user">
             {/* Add content and functionality specific to the admin dashboard */}
             <h2 className='create-user-title' >Create Users</h2>
