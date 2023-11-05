@@ -39,7 +39,7 @@ const UserTable = ({ users, role }) => {
   };
 
   
-  // const filteredUsers = users.filter(user => user.role === role);
+  
 
   return (
     <table className='admin-table'>
@@ -100,7 +100,7 @@ const NewUsers = () => {
 
   const fetchUsersByRole = async (role, usersState) => {
     try {
-      const response = await axios.get(`http://localhost:5000/users/getAll/`);
+      const response = await axios.get(`http://localhost:5000/users/getAll`);
       const users = response.data;
       usersState(users);
       return users;
