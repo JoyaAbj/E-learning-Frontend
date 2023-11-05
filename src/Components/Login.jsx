@@ -22,6 +22,7 @@ function Login({ setUserRole }) {
       .then((data) => {
         if (data.role) {
           setUserRole(data.role);
+          
 
           // Redirect to the appropriate dashboard based on the user's role
           if (data.role === 'student') {
@@ -31,7 +32,12 @@ function Login({ setUserRole }) {
           } else if (data.role === 'admin') {
             navigate('/admin');
           }
-        } else {
+        }
+        if (data.id){
+          localStorage.setItem('userId', data.id);
+          localStorage.setItem('languageId', data.id);
+        }
+         else {
           alert('Invalid email or password');
         }
       })
