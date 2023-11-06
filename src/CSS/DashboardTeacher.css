@@ -100,6 +100,11 @@ margin-top: 1%;
     flex-direction: column;
     align-items: center;
 }
+
+.list-of-lessons{
+    color: white;
+}
+
 .line1{
     background: #4853CD;
     height: 3px; 
@@ -108,12 +113,14 @@ margin-top: 1%;
     margin: 2%;
 }
 .lesson-form{
-    width: 1047px;
-
-flex-shrink: 0;
-border-radius: 20px;
-background: rgba(255, 217, 231, 0.29);
-padding: 1%;
+    width: 100%;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: rgba(255, 217, 231, 0.29);
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 }
 
 .input-lesson{
@@ -123,17 +130,42 @@ padding: 1%;
     border: none;
 }
 
-label{
+.form-title-dashTeacher{
     color: #573b8a;
     font-size: 25px;
     justify-content: flex-start;
     display: flex;
-    margin: 40px;
     font-weight: bold;
     cursor: pointer;
     transition: .5s ease-in-out;
     align-items: baseline;
 }
+
+.lesson-top{
+    color: #000;
+font-family: Poppins;
+font-size: 30px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.lesson-title, .lesson-content, .lesson-overview{
+    border-radius: 20px;
+background: #E0E0E0;
+border: none;
+    padding: 1%;
+    color: #4853CD
+}
+
+.add-lesson-button{
+    border: none;
+    background: #FFD9E7;
+    border-radius: 20px;
+    margin-top: 2%;
+    padding: 1%;
+}
+
 /*assessment*/
 .assessment-div{
     display: flex;

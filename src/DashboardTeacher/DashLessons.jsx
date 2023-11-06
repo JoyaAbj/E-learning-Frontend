@@ -10,6 +10,8 @@ const Dashlesson = () => {
   const [overview, setOverview] = useState('');
   const [content, setContent] = useState('');
   const [editLesson, setEditLesson] = useState(null);
+  const [lessonAddedMessage, setLessonAddedMessage] = useState('');
+  const [lessonUpdatedMessage, setLessonUpdatedMessage] = useState('');
 
   useEffect(() => {
     // Fetch levels when the component mounts
@@ -57,6 +59,7 @@ const Dashlesson = () => {
     axios.post('http://localhost:5000/lessons/add', newLesson)
       .then(response => {
         console.log('Lesson added successfully');
+        setLessonAddedMessage('Lesson added successfully');
         setName('');
         setOverview('');
         setContent('');
@@ -67,20 +70,24 @@ const Dashlesson = () => {
   };
 
   const handleDeleteLesson = (lessonId) => {
-    axios.delete(`http://localhost:5000/lessons/delete/${lessonId}`)
-      .then(response => {
-        console.log('Lesson deleted successfully');
-        setLessons(lessons.filter(lesson => lesson.lesson_id !== lessonId));
-      })
-      .catch(error => {
-        console.error('Error deleting lesson:', error);
-      });
+    const confirmDelete = window.confirm("Are you sure you want to delete this lesson?");
+    if (confirmDelete) {
+      axios.delete(`http://localhost:5000/lessons/delete/${lessonId}`)
+        .then(response => {
+          console.log('Lesson deleted successfully');
+          setLessons(lessons.filter(lesson => lesson.lesson_id !== lessonId));
+        })
+        .catch(error => {
+          console.error('Error deleting lesson:', error);
+        });
+    }
   };
 
   const handleSaveLesson = () => {
     axios.put(`http://localhost:5000/lessons/update/${editLesson.lesson_id}`, editLesson)
       .then(response => {
         console.log('Lesson updated successfully');
+        setLessonUpdatedMessage('Lesson updated successfully');
         setEditLesson(null);
       })
       .catch(error => {
@@ -106,11 +113,11 @@ const Dashlesson = () => {
                 Lesson: {lesson.lesson_name}
               </p>
               <img
-        className="svg-teach-dash"
-        src="./Images/sign-out-svgrepo-com.svg"
-        alt="Sign Out"
-        onClick={() => handleLessonClick(lesson)}
-      />
+                className="svg-teach-dash"
+                src="./Images/sign-out-svgrepo-com.svg"
+                alt="Sign Out"
+                onClick={() => handleLessonClick(lesson)}
+              />
               <img
                 src="./Images/bin-svgrepo-com.svg"
                 className="svg-teach-dash"
@@ -120,11 +127,21 @@ const Dashlesson = () => {
             </div>
           ))}
         </div>
-        <h4 className="profile">Lesson</h4>
+        <h4 className="lesson-top">Lesson</h4>
         <div className="line1"></div>
+        {lessonAddedMessage && (
+          <div className="confirmation-message">
+            {lessonAddedMessage}
+          </div>
+        )}
+        {lessonUpdatedMessage && (
+          <div className="confirmation-message">
+            {lessonUpdatedMessage}
+          </div>
+        )}
         {editLesson ? (
           <div className="lesson-form">
-            <label htmlFor="Title">Title:</label><br />
+            <label className='form-title-dashTeacher' htmlFor="Title">Title:</label><br />
             <input
               className="lesson-title"
               type="text"
@@ -132,25 +149,25 @@ const Dashlesson = () => {
               value={editLesson.lesson_name}
               onChange={(e) => setEditLesson({ ...editLesson, lesson_name: e.target.value })}
             />
-            <label htmlFor="Overview">Overview:</label><br />
+            <label className='form-title-dashTeacher' htmlFor="Overview">Overview:</label><br />
             <textarea
               className="lesson-overview"
               placeholder="Overview"
               value={editLesson.overview}
               onChange={(e) => setEditLesson({ ...editLesson, overview: e.target.value })}
             />
-            <label htmlFor="Content">Content:</label><br />
+            <label className='form-title-dashTeacher' htmlFor="Content">Content:</label><br />
             <textarea
               className="lesson-content"
               placeholder="Content"
               value={editLesson.content}
               onChange={(e) => setEditLesson({ ...editLesson, content: e.target.value })}
             />
-            <button type="button" onClick={handleSaveLesson}>Save</button>
+            <button className='add-lesson-button' type="button" onClick={handleSaveLesson}>Save</button>
           </div>
         ) : (
           <form action="" className="lesson-form">
-            <label htmlFor="Title">Title:</label><br />
+            <label className='form-title-dashTeacher' htmlFor="Title">Title:</label><br />
             <input
               className="lesson-title"
               type="text"
@@ -158,21 +175,21 @@ const Dashlesson = () => {
               value={lesson_name}
               onChange={(e) => setName(e.target.value)}
             />
-            <label htmlFor="Overview">Overview:</label><br />
+            <label className='form-title-dashTeacher' htmlFor="Overview">Overview:</label><br />
             <textarea
               className="lesson-overview"
               placeholder="Overview"
               value={overview}
               onChange={(e) => setOverview(e.target.value)}
             />
-            <label htmlFor="Content">Content:</label><br />
+            <label className='form-title-dashTeacher' htmlFor="Content">Content:</label><br />
             <textarea
               className="lesson-content"
               placeholder="Content"
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
-            <button type="button" onClick={handleAddLesson}>Add Lesson</button>
+            <button className='add-lesson-button' type="button" onClick={handleAddLesson}>Add Lesson</button>
           </form>
         )}
         <div className="line1"></div>

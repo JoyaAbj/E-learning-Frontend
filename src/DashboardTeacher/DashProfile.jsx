@@ -8,15 +8,17 @@ function Dashprofile() {
   const [languageName, setLanguageName] = useState([]);
   const [selectedLanguageId, setSelectedLanguageId] = useState(null);
   const [selectedLanguageName, setSelectedLanguageName] = useState("");
-  const [defaultLanguageId, setDefaultLanguageId] = useState(17); // Set the default language ID to English (ID 17)
+  const [defaultLanguageId, setDefaultLanguageId] = useState(""); // Set the default language ID to English (ID 17)
+  const [profileUrl, setProfileUrl] = useState(null);
   
   
 
   const fetchUserData = () => {
     axios.get(`http://localhost:5000/users/get/${localStorage.getItem('userId')}`)
       .then((response) => {
-        console.log(response.data);
+        console.log(response.data.profile_url);
         setUser(response.data);
+        setProfileUrl(response.data.profile_url);
         // Set the default language ID from the user's data
         // setDefaultLanguageId(response.data[0][0].language_id);
         // fetchlanguage(response.data[0][0].id);
@@ -114,6 +116,9 @@ function Dashprofile() {
           </div>
           <div className="profile-row">
             <p className="label-teach-profile">Language: {languageName}</p>
+          </div>
+          <div>
+            <img src={profileUrl} alt="profile" />
           </div>
         </div>
       </div>

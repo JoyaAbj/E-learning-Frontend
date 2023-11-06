@@ -24,9 +24,9 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login setUserRole={handleSetUserRole} />} />
-          <Route path="/student" element={userRole === 'student' ? <Student /> : <Navigate to="/login" />} />
-          <Route path="/teacher" element={userRole === 'teacher' ? <TeacherDashboard /> : <Navigate to="/login" />} />
-          <Route path="/admin" element={userRole === 'admin' ? <AdminDashboard /> : <Navigate to="/login" />} />
+          <Route path="/student" element={ <Student />} />
+          <Route path="/teacher" element={ <TeacherDashboard /> } />
+          <Route path="/admin" element={<AdminDashboard /> } />
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       </Router>
