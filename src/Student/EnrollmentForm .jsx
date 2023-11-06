@@ -88,7 +88,7 @@ console.log(selectedLevel)
         ))}
       </select>
 
-      <button className='enroll-btn' type="button" onClick={handleEnroll} disabled={!selectedLanguage || !selectedLevel}>
+      <button className='enroll-btn-student' type="button" onClick={handleEnroll} disabled={!selectedLanguage || !selectedLevel}>
         Enroll
       </button>
     </div>
