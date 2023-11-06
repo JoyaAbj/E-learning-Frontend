@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../CSS/Login.css';
+import axios from 'axios';
 
 function Login({ setUserRole }) {
   const [email, setEmail] = useState('');
@@ -45,6 +46,13 @@ function Login({ setUserRole }) {
         console.error('Error:', error);
       });
   };
+
+  const fetchUser = async () =>{
+    const response = axios.get(`http://localhost:5000/users/getAll/${setUserRole}`)
+    const data = await response.json();
+    localStorage.setItem("userId", data.id)
+  }
+
   const [confirmPassword, setConfirmPassword] = useState('');
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');

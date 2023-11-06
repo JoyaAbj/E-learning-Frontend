@@ -1,11 +1,15 @@
-import React from 'react'
+import React from 'react';
+import EnrollmentForm from './Student/EnrollmentForm ';
+import StartLearning from './Student/StartLearning';
 
-const Student = () => {
+
+const StudentDashboard = ({userId}) => {
   return (
     <div>
-      <h1>Student</h1>
+     <EnrollmentForm userId={userId}/>
+     <StartLearning userId={userId}/>
     </div>
-  )
-}
+  );
+};
 
-export default Student
+export default StudentDashboard;
