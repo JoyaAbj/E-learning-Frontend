@@ -50,13 +50,12 @@ function Dashprofile() {
 
 
 
-  const fetchlanguage = (id) => {
-    console.log(id)
-    axios.get(`http://localhost:5000/languages/getbyTeacherId/${id}`)
+  const fetchlanguage = () => {
+    axios.get(`http://localhost:5000/languages/getbyTeacherId/${localStorage.getItem('userId')}`)
     .then((response) => {
-        
+        console.log(response.data)
         setLanguageName(response?.data?.data[0]?.language_name);
-        localStorage.setItem('languageId', response.data.data[0].language_id)
+        localStorage.setItem('language_id', response.data.data[0].language_id)
         
       })
       .catch((error) => {
@@ -66,7 +65,9 @@ function Dashprofile() {
 
   useEffect(() => {
     fetchUserData();
+    fetchlanguage()
   }, []);
+  
 
 
   useEffect(() => {
