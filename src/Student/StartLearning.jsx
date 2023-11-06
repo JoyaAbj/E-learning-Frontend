@@ -42,21 +42,21 @@ const handleLanguageChange = (event) => {
     setSelectedLevelName(selectedOption.text);
   };
 
-  // Fetch enrolled levels when userId changes
-  useEffect(() => {
-    if (userId && selectedLanguage) {
-      // Fetch enrolled levels for the selected language
-      axios
-        .get(`http://localhost:5000/enroll/get/enrolledLevels`)
-        .then((response) => {
-          setEnrolledLevels(response.data);
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.error('Error fetching enrolled levels:', error);
-        });
-    }
-  }, [userId, selectedLanguage]);
+  // // Fetch enrolled levels when userId changes
+  // useEffect(() => {
+  //   if (userId && selectedLanguage) {
+  //     // Fetch enrolled levels for the selected language
+  //     axios
+  //       .get(`http://localhost:5000/enroll/get/enrolledLevels`)
+  //       .then((response) => {
+  //         setEnrolledLevels(response.data);
+  //         console.log(response.data);
+  //       })
+  //       .catch((error) => {
+  //         console.error('Error fetching enrolled levels:', error);
+  //       });
+  //   }
+  // }, [userId, selectedLanguage]);
 
 
   
@@ -100,7 +100,7 @@ const handleLanguageChange = (event) => {
     if (assessmentId && userId) {
       // Make an API request to create the user_assessment row and set submission to 'Submitted'
       axios
-        .put('http://localhost:5000/students/submit-assessment', {
+        .put('http://localhost:5000/enroll/post/submitUserAssessment', {
           assessmentId: assessmentId,
           studentId: userId,
         })
@@ -152,7 +152,7 @@ const handleLanguageChange = (event) => {
       <label htmlFor="level">Select Level:</label>
       <select id="level" name="level" value={selectedLevel} onChange={handleLevelChange}>
         <option value="">Select a Level</option>
-        {enrolledLevels.map((level) => (
+        {enrolledLevels.map((level) => level.language_id==selectedLanguage&& (
           <option key={level.level_id} value={level.level_name}>
             {level.level_name}
           </option>

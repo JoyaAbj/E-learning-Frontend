@@ -7,7 +7,7 @@ function EnrollmentForm({ userId }) {
   const [levels, setLevels] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState('');
   const [selectedLevel, setSelectedLevel] = useState('');
-  const [levelId, setLevelId] = useState('');
+  // const [levelId, setLevelId] = useState('');
 
   useEffect(() => {
    // Fetch available languages and populate the language dropdown
@@ -28,20 +28,21 @@ axios.get('http://localhost:5000/enroll/get/languages')
 axios.get(`http://localhost:5000/enroll/get/levels?language_id=${selectedLanguageId}`)
   .then((response) => {
     setLevels(response.data.levels);
-    setLevelId(response.data.levels[0].level_id)
+    // setLevelId(response.data.levels[0].level_id)
   })
   .catch((error) => {
     console.error(error);
   });
 }
-console.log(levelId)
+console.log(selectedLevel)
   const handleEnroll = () => {
       const studentId = localStorage.getItem("userId")
       console.log(studentId)
       const req = {
         student_id : studentId ,
-        level_id : levelId
+        level_id : selectedLevel
       }
+      console.log(req)
       // Send a POST request to the backend API to enroll the student
       fetch('http://localhost:5000/enroll/add/enroll', {
           method: 'POST',
@@ -74,7 +75,11 @@ console.log(levelId)
       </select>
 
       {/* <label className='select-level' htmlFor="level">Select Level:</label> */}
-      <select className='dropdown-levels' id="level" name="level" value={selectedLevel} onChange={(e) => setSelectedLevel(e.target.value)}>
+      <select className='dropdown-levels' id="level" name="level" value={selectedLevel} onChange={(e) => {
+        // setLevelId(e.target.value)
+        setSelectedLevel(e.target.value)
+      }
+      }>
         <option value="">Select a Level</option>
         {levels.map((level) => (
           <option key={level.level_id} value={level.level_id}>
