@@ -100,8 +100,9 @@ const NewUsers = () => {
 
   const fetchUsersByRole = async (role, usersState) => {
     try {
-      const response = await axios.get(`http://localhost:5000/users/getAll`);
-      const users = response.data;
+      const response = await axios.get(`http://localhost:5000/users/getAll/${role}`);
+      const users = response.data.data;
+      console.log(response.data.data)
       usersState(users);
       return users;
     } catch (error) {
