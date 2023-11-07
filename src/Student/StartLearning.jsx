@@ -14,6 +14,7 @@ function StartLearning({ userId }) {
   const [assessmentDetails, setAssessmentDetails] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [assessmentInput, setAssessmentInput] = useState('');
+  const [joinedLessons, setJoinedLessons] = useState([]);
   
   useEffect(() => {
     // if (userId && selectedLanguage) {
@@ -147,7 +148,44 @@ const handleLanguageChange = (event) => {
   };
 
   const selectedLesson = lessons[lessonIndex];
-
+  // const handleJoinLesson = (lessonId) => {
+  //   const userId = localStorage.getItem('userId')
+  //   axios
+  //     .post('http://localhost:5000/attendance/markattendance', {
+  //       lessonId: lessonId,
+  //       userId: userId, 
+  //     })
+  //     .then((response) => {
+        
+  //       console.log('Attendance marked:', response.data.message);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error marking attendance:', error);
+  //     });
+  // };
+  const handleJoinLesson = (lessonId) => {
+    // Check if the student has already joined the lesson
+    if (joinedLessons.includes(lessonId)) {
+      alert('You have already joined this lesson.');
+      return;
+    }
+    const userId = localStorage.getItem('userId')
+    // Make an API request to mark attendance for the selected lesson
+    axios
+    .post('http://localhost:5000/attendance/markattendance', {
+        lessonId: lessonId,
+        userId: userId, // Assuming you have the user ID
+      })
+      .then((response) => {
+        // Handle the response, e.g., show a success message
+        console.log('Attendance marked:', response.data.message);
+        // Update the joinedLessons state to indicate that the student has joined this lesson
+        setJoinedLessons([...joinedLessons, lessonId]);
+      })
+      .catch((error) => {
+        console.error('Error marking attendance:', error);
+      });
+  };
   return (
     <div className='start-learning-div'>
       <h2>My courses</h2>
@@ -184,6 +222,13 @@ const handleLanguageChange = (event) => {
               ))}
             </ul>
             <button onClick={() => handleStartAssessment(selectedLesson.lesson_id)}>Start Assessment</button>
+            {/* <button onClick={() => handleJoinLesson(selectedLesson.lesson_id)}>Join</button> */}
+            <button
+               onClick={() => handleJoinLesson(selectedLesson.lesson_id)}
+                 disabled={joinedLessons.includes(selectedLesson.lesson_id)}
+                 >
+                          Join
+               </button>
           </li>
         )}
       </ul>
