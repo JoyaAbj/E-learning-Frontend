@@ -10,6 +10,7 @@ function Dashprofile() {
   const [selectedLanguageName, setSelectedLanguageName] = useState("");
   const [defaultLanguageId, setDefaultLanguageId] = useState(""); // Set the default language ID to English (ID 17)
   const [profileUrl, setProfileUrl] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
   
   
 
@@ -95,6 +96,11 @@ function Dashprofile() {
   const handleSelectChange = (e) => {
     updateUserLanguage(e.target.value);
     setSelectedLanguageName(e.target.options[e.target.selectedIndex].text);
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setSelectedImage(file);
   };
 
   return (
