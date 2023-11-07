@@ -114,3 +114,26 @@
 .admin-table {
     margin: 1% auto;
 }
+
+.sign-out-text {
+    margin-top: 5%;
+    color: #4853CD;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 18px;
+}
+
+.sign-out-button {
+    margin-top: 2%;
+    color: #4853CD;
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 20px;
+    background: #FFD9E7;
+    margin-left: 42%;
+    border: none;
+    cursor: pointer;
+    padding: 1%;
+    width: 200px;
+}

@@ -43,6 +43,8 @@ const Dashlesson = () => {
     setSelectedLesson(null);
   };
 
+ 
+
   const handleLessonClick = (lesson) => {
     setSelectedLesson(lesson);
     setEditLesson(lesson);
@@ -106,6 +108,7 @@ const Dashlesson = () => {
             </option>
           ))}
         </select>
+        
         <div className="lessons">
           {lessons.map((lesson, index) => (
             <div className="lesson-row" key={index}>

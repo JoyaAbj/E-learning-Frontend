@@ -119,6 +119,8 @@ function Dashprofile() {
           </div>
           <div>
             <img src={profileUrl} alt="profile" />
+            <img src="../Images/pen-square-svgrepo-com.svg" alt="" className="svg-teach-dash" />
+            <img src="../Images/bin-svgrepo-com.svg" alt="" className="svg-teach-dash" />
           </div>
         </div>
       </div>
