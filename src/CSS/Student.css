@@ -34,7 +34,7 @@ background: #4853CD;
 box-shadow: 6px 6px 4px 0px rgba(0, 0, 0, 0.27);
 color: white;
 margin-left: 1%;
-padding: 10px;
+padding: 5px;
 width: 10%;
 font-size: large;
 }
@@ -46,9 +46,75 @@ font-size: large;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    height: fit-content;
+    height: 625px;
     /* margin-top: 2%; */
     flex-direction: column;
     width: fit-content;
     padding: 2%;
+}
+.selectlangstud{
+    color:#EEC1BB;
+    background:#4853CD;
+    margin-left: 70px;
+}
+ 
+.courstud{
+    color:white;
+    font-size: 32px;
+    font-style: bold;
+}
+.langstud{
+    margin-right: 155px;
+
+}
+
+.levstud{
+
+}
+
+.levelstud{
+    color:#EEC1BB;
+    background:#4853CD;
+    margin-left: 70px;
+}
+
+.startstud{
+    color:#EEC1BB;
+    background:#4853CD;
+    margin-left: 70px;
+    border-color: #4853CD;
+}
+
+.avstud{
+    color:#4853CD;
+    background-color: white;
+}
+
+.avstudd{
+    color:#4853CD;
+    background-color: white;
+}
+
+.previstud{
+    color:#EEC1BB;
+    background:#4853CD;
+    border-color: #4853CD;
+}
+
+.previstudd{
+    color:#EEC1BB;
+    background:#4853CD;
+    border-color: #4853CD;
+}
+
+.subsubstu{
+    color:#EEC1BB;
+    background:#4853CD;
+    border-color: #4853CD;
+}
+
+.subsubstuu{
+    color:#EEC1BB;
+    background:#4853CD;
+    border-color: #4853CD;
 }
