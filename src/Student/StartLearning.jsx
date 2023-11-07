@@ -164,7 +164,7 @@ const handleLanguageChange = (event) => {
         ))}
       </select>
 
-      <label htmlFor="level" className='levstud'>Select Level:</label>
+      <label htmlFor="level" className='langstud'>Select Level:</label>
       <select id="level" name="level" value={selectedLevel} className='levelstud' onChange={handleLevelChange}>
         <option value="">Select a Level</option>
         {enrolledLevels.map((level) => level.language_id==selectedLanguage&& (
