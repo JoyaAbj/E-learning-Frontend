@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NewUsers from './NewUsers';
+import Language from './Language';
+import SignOut from './Signout';
 import '../CSS/AdminDashboard.css'
 
 
@@ -7,10 +9,14 @@ const Admin = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [name, setName] = useState('');
     const [message, setMessage] = useState('');
-
     const [signupEmail, setSignupEmail] = useState('');
     const [signupPassword, setSignupPassword] = useState('');
     const [signupRole, setSignupRole] = useState('');
+    const [selectedOption, setSelectedOption] = useState('createUser');
+
+    const handleNavigationChange = (e) => {
+        setSelectedOption(e.target.value);
+    };
 
     const handleSignup = () => {
 
@@ -43,53 +49,70 @@ const Admin = () => {
                 console.error('Error:', error);
             });
     };
+
     return (
         <div>
-            <div className="create-user">
-            {/* Add content and functionality specific to the admin dashboard */}
-            <h2 className='create-user-title' >Create Users</h2>
-            <form action="" className="create-user-form">
-            <input className='create-user-input'
-                type="text"
-                placeholder="Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-            />
-            <input className='create-user-input'
-                type="email"
-                placeholder="Email"
-                value={signupEmail}
-                onChange={(e) => setSignupEmail(e.target.value)}
-            />
-            <input className='create-user-input'
-                type="password"
-                placeholder="Password"
-                value={signupPassword}
-                onChange={(e) => setSignupPassword(e.target.value)}
-            />
-            <input className='create-user-input'
-                type="password"
-                placeholder="Confirm Password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-            <select className='create-user-input'
-                value={signupRole}
-                onChange={(e) => setSignupRole(e.target.value)}
-            >
-                <option value="">Select Role</option>
-                <option value="student">Student</option>
-                <option value="teacher">Teacher</option>
-                <option value="admin">Admin</option>
-            </select>
-            </form>
-            <button className='create-user-button' onClick={handleSignup}>Create User</button>
-
-            {message && <p>{message}</p>}
+            <div>
+                <h2>
+                    <select className="Admin-Dropdown" value={selectedOption} onChange={handleNavigationChange}>
+                        <option value="createUser">Create User</option>
+                        <option value="language">Language</option>
+                        <option value="signout">Sign Out</option>
+                    </select>
+                </h2>
             </div>
-
-            <NewUsers />
-
+            {selectedOption === 'createUser' && (
+                <div className="create-user">
+                    <h2 className='create-user-title'> Add User</h2>
+                    <form action="" className="create-user-form">
+                        <input
+                            className="create-user-input"
+                            type="text"
+                            placeholder="Name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                        <input
+                            className="create-user-input"
+                            type="email"
+                            placeholder="Email"
+                            value={signupEmail}
+                            onChange={(e) => setSignupEmail(e.target.value)}
+                        />
+                        <input
+                            className="create-user-input"
+                            type="password"
+                            placeholder="Password"
+                            value={signupPassword}
+                            onChange={(e) => setSignupPassword(e.target.value)}
+                        />
+                        <input
+                            className="create-user-input"
+                            type="password"
+                            placeholder="Confirm Password"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                        />
+                        <select
+                            className="create-user-input"
+                            value={signupRole}
+                            onChange={(e) => setSignupRole(e.target.value)}
+                        >
+                            <option value="">Select Role</option>
+                            <option value="student">Student</option>
+                            <option value="teacher">Teacher</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </form>
+                    <button className="create-user-button" onClick={handleSignup}>
+                        Create User
+                    </button>
+                    {message && <p>{message}</p>}
+                </div>
+            )}
+            {selectedOption === 'createUser' && <NewUsers />}
+            {selectedOption === 'language' && <Language />}
+            {selectedOption === 'signout' && <SignOut />}
         </div>
     );
 };
