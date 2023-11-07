@@ -4,7 +4,7 @@ import axios from 'axios';
 const Language = () => {
     const [language_name, setLanguageName] = useState('');
     const [language_img, setLanguageImage] = useState(null);
-    const [languages, setLanguages] = useState([]);
+    const [availableLanguages, setAvailableLanguages] = useState([]);
     const [teachers, setTeachers] = useState([]);
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -15,20 +15,16 @@ const Language = () => {
     const [assignErrorMessage, setAssignErrorMessage] = useState('');
 
     useEffect(() => {
-        fetchLanguages();
+        fetchAvailableLanguages();
         fetchTeachers();
     }, []);
 
-    const fetchLanguages = async () => {
+    const fetchAvailableLanguages = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/languages/getALL');
-            if (Array.isArray(response.data.data)) {
-                setLanguages(response.data.data);
-            } else {
-                console.error('Invalid response data:', response.data);
-            }
+            const response = await axios.get('http://localhost:5000/languages/newLanguage');
+            setAvailableLanguages(response.data);
         } catch (error) {
-            console.error('Error fetching languages:', error);
+            console.error('Error fetching available languages:', error);
         }
     };
 
@@ -37,7 +33,6 @@ const Language = () => {
             const response = await axios.get('http://localhost:5000/users/getAll/teacher');
             if (Array.isArray(response.data.data)) {
                 setTeachers(response.data.data);
-                console.log(response.data.data);
             } else {
                 console.error('Invalid response data:', response.data);
             }
@@ -45,6 +40,7 @@ const Language = () => {
             console.error('Error fetching teachers:', error);
         }
     };
+
 
     const handleAddLanguage = async () => {
         try {
@@ -57,7 +53,7 @@ const Language = () => {
 
             setLanguageName('');
             setLanguageImage(null);
-            fetchLanguages();
+            fetchAvailableLanguages();
 
             const fileInput = document.getElementById('fileInput');
             if (fileInput) {
@@ -75,20 +71,22 @@ const Language = () => {
     };
 
     const handleAssignLanguage = async () => {
+        console.log(selectedLanguage);
+        console.log(selectedTeacher);
         if (selectedLanguage && selectedTeacher) {
+            const language_id = availableLanguages.find(language => language.language_name === selectedLanguage).language_id;
+
+            console.log(language_id);
             try {
-                const response = await axios.post('http://localhost:5000/languages/assign', {
-                    language_id: selectedLanguage,
-                    teacher_id: selectedTeacher,
-                });
+                const response = await axios.put(`http://localhost:5000/languages/assign/${selectedTeacher}/${language_id}`);
 
-                console.log(response.data.data);
-
-                if (response.data.success) {
+                console.log(response.data);
+                if (response.data) {
                     setAssignSuccessMessage('Language assigned to the teacher successfully');
                     setAssignErrorMessage('');
                     setSelectedLanguage('');
                     setSelectedTeacher('');
+                    fetchAvailableLanguages();
                 } else {
                     setAssignErrorMessage('Error assigning the language to the teacher. Please try again');
                     setAssignSuccessMessage('');
@@ -117,7 +115,7 @@ const Language = () => {
         try {
             const response = await axios.delete(`http://localhost:5000/languages/delete/${languageId}`);
             console.log(response.data);
-            fetchLanguages();
+            fetchAvailableLanguages();
 
             setSuccessMessage('The language was removed successfully.');
             setErrorMessage('');
@@ -133,35 +131,47 @@ const Language = () => {
         <div>
             <h2 className='users-admin'>Add Language</h2>
             <div className='language-dashboard'>
-                <input className='language-input'
+                <input
+                    className='language-input'
                     type="text"
                     placeholder="Language Name"
                     value={language_name}
                     onChange={(e) => setLanguageName(e.target.value)}
                 />
-                <input className='language-input'
+                <input
+                    className='language-input'
                     type="file"
                     accept=".jpg, .png, .jpeg"
                     onChange={(e) => setLanguageImage(e.target.files[0])}
                     id="fileInput"
                 />
-                <button className='language-button' onClick={handleAddLanguage}>Add Language</button>
+                <button className='language-button' onClick={handleAddLanguage}>
+                    Add Language
+                </button>
             </div>
 
-            {successMessage && <p style={{ color: 'black' }}>{successMessage}</p>}
-            {errorMessage && <p style={{ color: 'black' }}>{errorMessage}</p>}
+            {successMessage && <p style={{ color: 'black', textAlign: 'center' }}>{successMessage}</p>}
+            {errorMessage && <p style={{ color: 'black', textAlign: 'center' }}>{errorMessage}</p>}
 
             <h2 className='users-admin'>Assign Language</h2>
             <div className='language-dashboard1'>
-                <select className='language-input' value={selectedLanguage} onChange={(e) => setSelectedLanguage(e.target.value)}>
+                <select
+                    className='language-input'
+                    value={selectedLanguage}
+                    onChange={(e) => setSelectedLanguage(e.target.value)}
+                >
                     <option value="">Select a Language</option>
-                    {languages.map((language) => (
-                        <option key={language.language_id} value={language.language_id}>
+                    {availableLanguages.map((language) => (
+                        <option key={language.language_id} value={language.language_name}>
                             {language.language_name}
                         </option>
                     ))}
                 </select>
-                <select className='language-input' value={selectedTeacher} onChange={(e) => setSelectedTeacher(e.target.value)}>
+                <select
+                    className='language-input'
+                    value={selectedTeacher}
+                    onChange={(e) => setSelectedTeacher(e.target.value)}
+                >
                     <option value="">Select a Teacher</option>
                     {teachers.map((teacher) => (
                         <option key={teacher.id} value={teacher.id}>
@@ -170,11 +180,13 @@ const Language = () => {
                     ))}
                 </select>
 
-                <button className='language-button' onClick={handleAssignLanguage}>Assign Language</button>
+                <button className='language-button' onClick={handleAssignLanguage}>
+                    Assign Language
+                </button>
             </div>
 
-            {assignSuccessMessage && <p style={{ color: 'black' }}>{assignSuccessMessage}</p>}
-            {assignErrorMessage && <p style={{ color: 'black' }}>{assignErrorMessage}</p>}
+            {assignSuccessMessage && <p style={{ color: 'black', textAlign: 'center' }}>{assignSuccessMessage}</p>}
+            {assignErrorMessage && <p style={{ color: 'black', textAlign: 'center' }}>{assignErrorMessage}</p>}
 
             <h2 className='users-admin'>Languages</h2>
             <table className='admin-table'>
@@ -185,7 +197,7 @@ const Language = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {languages.map((language) => (
+                    {availableLanguages.map((language) => (
                         <tr key={language.language_id}>
                             <td className='language-td'>{language.language_name}</td>
                             <td>
@@ -203,8 +215,8 @@ const Language = () => {
                     ))}
                 </tbody>
             </table>
-        </div >
+        </div>
     );
-};
+}
 
 export default Language;
