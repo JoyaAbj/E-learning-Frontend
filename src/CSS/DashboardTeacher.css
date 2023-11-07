@@ -88,7 +88,7 @@ margin-top: 1%;
     margin-top: 2%;
     display: flex;
     background: rgba(72, 83, 205, 0.54);
-    width: 1062px;
+    width: 100%;
     
     
 }
@@ -171,6 +171,9 @@ border: none;
     display: flex;
     flex-direction: column;
 }
+.confirmation-message{
+    color: #4853CD;
+}
 
 /*attendance*/
 .attendance{
@@ -204,4 +207,9 @@ cursor: pointer;
     align-items: baseline;;
     justify-content: flex-start;
     margin-left: 10px;
+}
+.select-level-lesson-teacher{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }

@@ -36,20 +36,21 @@ function DashboardSidebar() {
             </a>
             </div>
             
+            
            <div className="elements">
            <img class="svg-teach-dash" src="../Images/open-book-svgrepo-com.svg"/>
             <a href="#" onClick={() => handleSidebarClick('lessons')}>
               Lessons
             </a>
             </div>
-           
+            
             <div class="elements">
             <img class="svg-teach-dash" src="../Images/pdf-fill.svg"/>
             <a href="#" onClick={() => handleSidebarClick('assessment')}>
               Assessment
             </a>
             </div>
-          
+            
               <div class="elements">
              <img class="svg-teach-dash" src="../Images/user-check-alt-1-svgrepo-com.svg"/>
             <a href="#" onClick={() => handleSidebarClick('attendance')}>
