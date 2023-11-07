@@ -27,7 +27,11 @@ rgba(72, 83, 205, 0.84) 43.03%,
     background: transparent;
     border: none;
 }
-
+.options-enrollment{
+    color: white;
+    border-radius: 20px;
+    background: #4853CD;
+}
 .enroll-btn-student{
     border-radius: 20px;
 background: #4853CD;
@@ -42,13 +46,13 @@ font-size: large;
 /*StartLearning*/
 .start-learning-div{
     border-radius: 0px 0px 20px 20px;
-    background: linear-gradient(97deg, #FFD9E7 0%, #EEC1BB 79.54%, rgba(238, 193, 187, 0.00) 102.21%);
+    background: #FFD9E7;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: flex-start;
     height: 625px;
-    /* margin-top: 2%; */
-    flex-direction: column;
+    /* flex-direction: column; */
+    width: -moz-fit-content;
     width: fit-content;
     padding: 2%;
 }
@@ -56,10 +60,13 @@ font-size: large;
     color:#EEC1BB;
     background:#4853CD;
     margin-left: 70px;
+    padding: 1%;
+    border-radius: 20px;
+    
 }
  
 .courstud{
-    color:white;
+    color: rgba(72, 83, 205, 0.88);
     font-size: 32px;
     font-style: bold;
 }
@@ -68,21 +75,23 @@ font-size: large;
 
 }
 
-.levstud{
 
-}
 
 .levelstud{
     color:#EEC1BB;
     background:#4853CD;
     margin-left: 70px;
+    padding: 1%;
+    border-radius: 20px;
 }
 
 .startstud{
     color:#EEC1BB;
     background:#4853CD;
     margin-left: 70px;
-    border-color: #4853CD;
+    padding: 1%;
+    border-radius: 20px;
+    margin-top: 20px;
 }
 
 .avstud{
@@ -99,12 +108,17 @@ font-size: large;
     color:#EEC1BB;
     background:#4853CD;
     border-color: #4853CD;
+    border-radius: 20px;
+    padding: 1%;
 }
 
-.previstudd{
+.previstudd, .start-assessment-student{
     color:#EEC1BB;
     background:#4853CD;
     border-color: #4853CD;
+    border-radius: 20px;
+    padding: 1%;
+    margin: 20px;
 }
 
 .subsubstu{
@@ -117,4 +131,8 @@ font-size: large;
     color:#EEC1BB;
     background:#4853CD;
     border-color: #4853CD;
+}
+
+.lesson-name-student{
+    margin-top: 20px;
 }

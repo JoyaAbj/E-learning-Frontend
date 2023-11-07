@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
-import '../CSS/Student.css'
+import '../CSS/Student.css';
+
 
 function StartLearning({ userId }) {
   const [languages, setLanguages] = useState([]);
@@ -14,6 +15,7 @@ function StartLearning({ userId }) {
   const [assessmentDetails, setAssessmentDetails] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [assessmentInput, setAssessmentInput] = useState('');
+  
   
   useEffect(() => {
     // if (userId && selectedLanguage) {
@@ -150,6 +152,7 @@ const handleLanguageChange = (event) => {
 
   return (
     <div className='start-learning-div'>
+      <div className="chooselanguage">
       < h2 className='courstud'>My courses</h2>
       <label htmlFor="language" className='langstud'>Select Language:</label>
       <select id="language" name="language" className='selectlangstud' value={selectedLanguage} onChange={handleLanguageChange}>
@@ -171,15 +174,17 @@ const handleLanguageChange = (event) => {
         ))}
       </select>
       <button onClick={handleStartLearning} className='startstud'>Start Learning</button>
-      {lessons.length > 0 && (
+      </div>
+      <div className='lesson-open'>{lessons.length > 0 && (
         <div>
           <h3>Available Lessons:</h3>
           <ul>
             {selectedLesson && (
               <li key={selectedLesson.lesson_id}>
-                <h4>{selectedLesson.lesson_name}</h4>
+                <h4 className='lesson-name-student'>{selectedLesson.lesson_name}</h4>
+                <h4>{selectedLesson.overview}</h4>
                 <p>{selectedLesson.content}</p>
-                <button onClick={() => handleStartAssessment(selectedLesson.lesson_id)}>Start Assessment</button>
+                <button className='start-assessment-student' onClick={() => handleStartAssessment(selectedLesson.lesson_id)}>Start Assessment</button>
               </li>
             )}
           </ul>
@@ -201,10 +206,12 @@ const handleLanguageChange = (event) => {
           <p>Assessment Title: {assessmentDetails.assessment_title}</p>
           <p>Duration: {assessmentDetails.duration} minutes</p>
           <p>Question: {assessmentDetails.question}</p>
+          <input type="text" />
           <button type="submit" onClick={handleSubmitAssessment}>Submit Assessment</button>
           <button onClick={closeModal}>Close</button>
         </Modal>
       )}
+      </div>
 
 
     </div>
