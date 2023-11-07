@@ -165,6 +165,16 @@ const Dashassessment = () => {
         ))}
       </div>
       <div className="line1"></div>
+      {AssessmentAddedMessage && (
+          <div className="confirmation-message">
+            {AssessmentAddedMessage}
+          </div>
+        )}
+         {assessmentUpdatedMessage && (
+          <div className="confirmation-message">
+            {assessmentUpdatedMessage}
+          </div>
+        )}
       {editAssessment ? (
           <div className="lesson-form">
             
