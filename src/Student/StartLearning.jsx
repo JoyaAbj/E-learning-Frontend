@@ -13,6 +13,7 @@ function StartLearning({ userId }) {
   const [lessons, setLessons] = useState([]);
   const [assessmentDetails, setAssessmentDetails] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [assessmentInput, setAssessmentInput] = useState('');
   
   useEffect(() => {
     // if (userId && selectedLanguage) {
@@ -77,8 +78,9 @@ const handleLanguageChange = (event) => {
   const handleStartAssessment = (lessonId) => {
     // Make an API request to fetch the assessment details for the selected lesson
     axios
-      .get(`http://localhost:5000/enroll/get/fetch-assessment/${userId}/${lessonId}`)
+      .get(`http://localhost:5000/userAssessment/get/lessonIDAssessment/${localStorage.getItem('userId')}/${lessonId}`)
       .then((response) => {
+        console.log(response.data.data)
         // Handle the response and show the assessment details to the user
         const assessmentDetails = response.data.data;
         setAssessmentDetails(assessmentDetails);
@@ -95,14 +97,22 @@ const handleLanguageChange = (event) => {
     setIsModalOpen(true);
   };
 
+  const handleAssessmentInputChange = (event) => {
+    setAssessmentInput(event.target.value);
+  };
+
 
   const handleSubmitAssessment = () => {
-    if (assessmentId && userId) {
+
+  
+    const userId = localStorage.getItem('userId')
+    if (assessmentId && userId && assessmentInput) {
       // Make an API request to create the user_assessment row and set submission to 'Submitted'
       axios
-        .put('http://localhost:5000/enroll/post/submitUserAssessment', {
+        .post(`http://localhost:5000/userAssessment/post/submitUserAssessment`, {
           assessmentId: assessmentId,
           studentId: userId,
+          assessmentInput: assessmentInput,
         })
         .then((submitResponse) => {
           console.log('Assessment submitted:', submitResponse.data);
@@ -117,6 +127,8 @@ const handleLanguageChange = (event) => {
     }
     document.querySelector('button[type="submit"]').disabled = true;
   };
+  console.log(assessmentInput)
+  
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -161,13 +173,13 @@ const handleLanguageChange = (event) => {
       <button onClick={handleStartLearning} className='startstud'>Start Learning</button>
       {lessons.length > 0 && (
         <div>
-          <h3 className='avstud'>Available Lessons:</h3>
-          <ul className='avstudd'>
+          <h3>Available Lessons:</h3>
+          <ul>
             {selectedLesson && (
               <li key={selectedLesson.lesson_id}>
                 <h4>{selectedLesson.lesson_name}</h4>
                 <p>{selectedLesson.content}</p>
-                <button onClick={() => handleStartAssessment(selectedLesson.lesson_id)} className='assstud'>Start Assessment</button>
+                <button onClick={() => handleStartAssessment(selectedLesson.lesson_id)}>Start Assessment</button>
               </li>
             )}
           </ul>
@@ -189,8 +201,8 @@ const handleLanguageChange = (event) => {
           <p>Assessment Title: {assessmentDetails.assessment_title}</p>
           <p>Duration: {assessmentDetails.duration} minutes</p>
           <p>Question: {assessmentDetails.question}</p>
-          <button type="submit" onClick={handleSubmitAssessment}className='subsubstu'>Submit Assessment</button>
-          <button onClick={closeModal}className='subsubstuu'>Close</button>
+          <button type="submit" onClick={handleSubmitAssessment}>Submit Assessment</button>
+          <button onClick={closeModal}>Close</button>
         </Modal>
       )}
 
