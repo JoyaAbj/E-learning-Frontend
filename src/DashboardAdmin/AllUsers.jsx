@@ -38,9 +38,6 @@ const UserTable = ({ users, role }) => {
     }
   };
 
-
-
-
   return (
     <table className='admin-table'>
       <thead className='admin-thead'>
@@ -94,7 +91,7 @@ const UserTable = ({ users, role }) => {
   );
 };
 
-const NewUsers = () => {
+const AllUsers = () => {
   const [users, setUsers] = useState([]);
   const [role, setRole] = useState('student');
 
@@ -128,4 +125,4 @@ const NewUsers = () => {
   );
 };
 
-export default NewUsers;
+export default AllUsers;

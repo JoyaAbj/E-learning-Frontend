@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../CSS/AdminDashboard.css';
 
 const Language = () => {
     const [language_name, setLanguageName] = useState('');
