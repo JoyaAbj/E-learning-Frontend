@@ -10,6 +10,7 @@ function Dashprofile() {
   const [selectedLanguageName, setSelectedLanguageName] = useState("");
   const [defaultLanguageId, setDefaultLanguageId] = useState(""); // Set the default language ID to English (ID 17)
   const [profileUrl, setProfileUrl] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
   
   
 
@@ -97,6 +98,11 @@ function Dashprofile() {
     setSelectedLanguageName(e.target.options[e.target.selectedIndex].text);
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setSelectedImage(file);
+  };
+
   return (
     
     <div>
@@ -119,6 +125,8 @@ function Dashprofile() {
           </div>
           <div>
             <img src={profileUrl} alt="profile" />
+            <img src="../Images/pen-square-svgrepo-com.svg" alt="" className="svg-teach-dash" />
+            <img src="../Images/bin-svgrepo-com.svg" alt="" className="svg-teach-dash" />
           </div>
         </div>
       </div>

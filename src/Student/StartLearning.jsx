@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
-import '../CSS/Student.css'
+import '../CSS/Student.css';
+
 
 function StartLearning({ userId }) {
   const [languages, setLanguages] = useState([]);
@@ -15,6 +16,7 @@ function StartLearning({ userId }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [assessmentInput, setAssessmentInput] = useState('');
   const [joinedLessons, setJoinedLessons] = useState([]);
+  
   
   useEffect(() => {
     // if (userId && selectedLanguage) {
@@ -188,10 +190,11 @@ const handleLanguageChange = (event) => {
   };
   return (
     <div className='start-learning-div'>
-      <h2>My courses</h2>
-      <label htmlFor="language">Select Language:</label>
-      <select id="language" name="language" value={selectedLanguage} onChange={handleLanguageChange}>
-        <option value="">Select a Language</option>
+      <div className="chooselanguage">
+      < h2 className='courstud'>My courses</h2>
+      <label htmlFor="language" className='langstud'>Select Language:</label>
+      <select id="language" name="language" className='selectlangstud' value={selectedLanguage} onChange={handleLanguageChange}>
+        <option value="" >Select a Language</option>
         {languages && languages.map((language) => (
           <option key={language.language_id} value={language.language_id}>
             {language.language_name}
@@ -199,8 +202,8 @@ const handleLanguageChange = (event) => {
         ))}
       </select>
 
-      <label htmlFor="level">Select Level:</label>
-      <select id="level" name="level" value={selectedLevel} onChange={handleLevelChange}>
+      <label htmlFor="level" className='langstud'>Select Level:</label>
+      <select id="level" name="level" value={selectedLevel} className='levelstud' onChange={handleLevelChange}>
         <option value="">Select a Level</option>
         {enrolledLevels.map((level) => level.language_id==selectedLanguage&& (
           <option key={level.level_id} value={level.level_name}>
@@ -234,10 +237,10 @@ const handleLanguageChange = (event) => {
       </ul>
 
           <div>
-            <button onClick={handlePreviousLesson} disabled={lessonIndex === 0}>
+            <button onClick={handlePreviousLesson} disabled={lessonIndex === 0} className='previstud'>
               Previous Lesson
             </button>
-            <button onClick={handleNextLesson} disabled={lessonIndex === lessons.length - 1}>
+            <button onClick={handleNextLesson} disabled={lessonIndex === lessons.length - 1}  className='previstudd'>
               Next Lesson
             </button>
           </div>
@@ -250,17 +253,12 @@ const handleLanguageChange = (event) => {
           <p>Assessment Title: {assessmentDetails.assessment_title}</p>
           <p>Duration: {assessmentDetails.duration} minutes</p>
           <p>Question: {assessmentDetails.question}</p>
-          <input
-          type="text"
-          value={assessmentInput}
-          onChange={handleAssessmentInputChange}
-          />
-          
-
+          <input type="text" />
           <button type="submit" onClick={handleSubmitAssessment}>Submit Assessment</button>
           <button onClick={closeModal}>Close</button>
         </Modal>
       )}
+      </div>
 
 
     </div>

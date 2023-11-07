@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../CSS/Student.css';
+import SignOut from '../DashboardAdmin/Signout';
 
 function EnrollmentForm({ userId }) {
+
+  
+
+
   const [languages, setLanguages] = useState([]);
   const [levels, setLevels] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState('');
@@ -66,9 +71,9 @@ console.log(selectedLevel)
         {/* <h1 className='enroll-title'>What do you wanna learn</h1> */}
       {/* <label className='select-language' htmlFor="language">Select Language:</label> */}
       <select className='dropdown-language' id="language" name="language" value={selectedLanguage} onChange={handleLanguageChange}>
-        <option value="">Select a Language</option>
+        <option className='options-enrollment' value="">Select a Language</option>
         {languages && languages.map((language) => (
-          <option key={language.language_id} value={language.language_id}>
+          <option className='options-enrollment' key={language.language_id} value={language.language_id}>
             {language.language_name}
           </option>
         ))}
@@ -80,9 +85,9 @@ console.log(selectedLevel)
         setSelectedLevel(e.target.value)
       }
       }>
-        <option value="">Select a Level</option>
+        <option className='options-enrollment' value="">Select a Level</option>
         {levels.map((level) => (
-          <option key={level.level_id} value={level.level_id}>
+          <option className='options-enrollment' key={level.level_id} value={level.level_id}>
             {level.level_name}
           </option>
         ))}
@@ -91,6 +96,10 @@ console.log(selectedLevel)
       <button className='enroll-btn-student' type="button" onClick={handleEnroll} disabled={!selectedLanguage || !selectedLevel}>
         Enroll
       </button>
+      
+      <div className="elements">
+  <SignOut/>
+  </div>
     </div>
   );
 }

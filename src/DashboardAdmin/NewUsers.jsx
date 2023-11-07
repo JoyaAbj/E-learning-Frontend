@@ -38,8 +38,8 @@ const UserTable = ({ users, role }) => {
     }
   };
 
-  
-  
+
+
 
   return (
     <table className='admin-table'>
