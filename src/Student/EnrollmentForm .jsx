@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../CSS/Student.css';
+import SignOut from '../DashboardAdmin/Signout';
 
 function EnrollmentForm({ userId }) {
+
+  
+
+
   const [languages, setLanguages] = useState([]);
   const [levels, setLevels] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState('');
@@ -91,6 +96,10 @@ console.log(selectedLevel)
       <button className='enroll-btn-student' type="button" onClick={handleEnroll} disabled={!selectedLanguage || !selectedLevel}>
         Enroll
       </button>
+      
+      <div className="elements">
+  <SignOut/>
+  </div>
     </div>
   );
 }
