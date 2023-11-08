@@ -58,7 +58,7 @@ const Dashlesson = () => {
       level_id: selectedLevel,
     };
 
-    axios.post('${url}/lessons/add', newLesson)
+    axios.post(`${url}/lessons/add`, newLesson)
       .then(response => {
         console.log('Lesson added successfully');
         setLessonAddedMessage('Lesson added successfully');

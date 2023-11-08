@@ -171,3 +171,10 @@ font-size: large;
     /* justify-content: center; */
     flex-direction: column;
 }
+.chooselanguage{
+    display: flex;
+}
+.start-assessment-student-join{
+    border-radius: 20px;
+    padding: 1%;
+}

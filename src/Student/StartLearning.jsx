@@ -114,7 +114,7 @@ const handleLanguageChange = (event) => {
       axios
         .post(`${url}/userAssessment/post/submitUserAssessment`, {
           assessmentId: assessmentId,
-          studentId: userId,
+          studentId: localStorage.getItem('userId'),
           assessmentInput: assessmentInput,
         })
         .then((submitResponse) => {
@@ -228,7 +228,7 @@ const handleLanguageChange = (event) => {
            
             <button className='start-assessment-student' onClick={() => handleStartAssessment(selectedLesson.lesson_id)}>Start Assessment</button>
             {/* <button onClick={() => handleJoinLesson(selectedLesson.lesson_id)}>Join</button> */}
-            <button className='start-assessment-student'
+            <button className='start-assessment-student-join'
                onClick={() => handleJoinLesson(selectedLesson.lesson_id)}
                  disabled={joinedLessons.includes(selectedLesson.lesson_id)}
                  >

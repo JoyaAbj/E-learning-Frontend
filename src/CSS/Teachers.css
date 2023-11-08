@@ -52,7 +52,7 @@
 /*Tablet*/
 @media screen and (min-width:767px) and (max-width:1023px) {
     .Teachers-heading {
-        margin-top: 10%;
+        margin-top: 20%;
     }
 
     .Teachers-grid {
@@ -77,6 +77,6 @@
     }
 
     .Teachers-heading {
-        margin-top: 75%;
+        margin-top: 108%;
     }
 }
