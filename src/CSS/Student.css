@@ -50,10 +50,10 @@ font-size: large;
     display: flex;
     justify-content: space-evenly;
     align-items: flex-start;
-    height: 625px;
+    height: fit-content;
     /* flex-direction: column; */
     width: -moz-fit-content;
-    width: fit-content;
+    width: 100%;
     padding: 2%;
 }
 .selectlangstud{
@@ -73,12 +73,11 @@ font-size: large;
 .langstud{
     margin-right: 155px;
     color: #4853CD;
-font-family: Poppins;
-font-size: 41px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-
+    font-family: Poppins;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }
 
 
@@ -141,4 +140,34 @@ line-height: normal;
 
 .lesson-name-student{
     margin-top: 20px;
+}
+
+.assessment-details, .assessment-title{
+    color: #4853CD;
+    font-weight: 700;
+}
+.the-title{
+    color: #4853CD;
+}
+.assessment-submit{
+    border-radius: 20px;
+    background: #4853CD;
+    padding: 1%;
+    border: none;
+    cursor: pointer;
+    margin: 1%;
+    color: white;
+}
+.answer{
+    background: #e0dede;
+    border-radius: 20px;
+    resize: none;
+    width: 100%;
+}
+.choose-lesson{
+    display: flex;
+    align-items: flex-start;
+    align-content: space-around;
+    /* justify-content: center; */
+    flex-direction: column;
 }

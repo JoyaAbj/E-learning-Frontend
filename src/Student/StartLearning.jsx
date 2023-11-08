@@ -191,6 +191,7 @@ const handleLanguageChange = (event) => {
   return (
     <div className='start-learning-div'>
       <div className="chooselanguage">
+      <div className='choose-lesson'>
       < h2 className='courstud'>My courses</h2>
       <label htmlFor="language" className='langstud'>Select Language:</label>
       <select id="language" name="language" className='selectlangstud' value={selectedLanguage} onChange={handleLanguageChange}>
@@ -211,22 +212,23 @@ const handleLanguageChange = (event) => {
           </option>
         ))}
       </select>
-      <button onClick={handleStartLearning}>Start Learning</button>
+      <button className='start-assessment-student' onClick={handleStartLearning}>Start Learning</button>
+      </div>
       {lessons.length > 0 && (
-    <div>
-      <h3>Available Lessons:</h3>
+    <div >
+      <h3 className='courstud'>Available Lessons:</h3>
       <ul>
         {selectedLesson && (
           <li key={selectedLesson.lesson_id}>
-            <h4>{selectedLesson.lesson_name}</h4>
-            <ul>
+            <h4 className='lesson-name-student'>{selectedLesson.lesson_name}</h4>
+            <h4 className='lesson-name-student'>{selectedLesson.overview}</h4>
               {selectedLesson.content.split(',').map((item, index) => (
                 <li key={index}>{item.trim()}</li>
               ))}
-            </ul>
-            <button onClick={() => handleStartAssessment(selectedLesson.lesson_id)}>Start Assessment</button>
+           
+            <button className='start-assessment-student' onClick={() => handleStartAssessment(selectedLesson.lesson_id)}>Start Assessment</button>
             {/* <button onClick={() => handleJoinLesson(selectedLesson.lesson_id)}>Join</button> */}
-            <button
+            <button className='start-assessment-student'
                onClick={() => handleJoinLesson(selectedLesson.lesson_id)}
                  disabled={joinedLessons.includes(selectedLesson.lesson_id)}
                  >
@@ -248,14 +250,20 @@ const handleLanguageChange = (event) => {
       )}
 
       {isModalOpen && assessmentDetails && (
-        <Modal isOpen={isModalOpen} onClose={closeModal}>
-          <h3>Assessment Details:</h3>
-          <p>Assessment Title: {assessmentDetails.assessment_title}</p>
-          <p>Duration: {assessmentDetails.duration} minutes</p>
-          <p>Question: {assessmentDetails.question}</p>
-          <input type="text" />
-          <button type="submit" onClick={handleSubmitAssessment}>Submit Assessment</button>
-          <button onClick={closeModal}>Close</button>
+        <Modal  isOpen={isModalOpen} onClose={closeModal}>
+          <h3 className='assessment-details'>Assessment Details:</h3>
+          <p className='assessment-title'>Assessment Title:</p>
+          <p className='the-title'> {assessmentDetails.assessment_title}</p>
+          <p className='assessment-title'>Duration: </p>
+          <p className='the-title'>{assessmentDetails.duration} minutes</p>
+          <p className='assessment-title'>Question:</p>
+          <p className='the-title'> {assessmentDetails.question}</p>
+          <textarea className='answer'
+          name="answer"  
+          cols="30" 
+          rows="10"></textarea>
+          <button className='assessment-submit' type="submit" onClick={handleSubmitAssessment}>Submit Assessment</button>
+          <button className='assessment-submit' onClick={closeModal}>Close</button>
         </Modal>
       )}
       </div>
