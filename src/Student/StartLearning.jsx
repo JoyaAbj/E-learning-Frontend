@@ -15,6 +15,7 @@ function StartLearning({ userId }) {
   const [assessmentDetails, setAssessmentDetails] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [assessmentInput, setAssessmentInput] = useState('');
+  const [joinedLessons, setJoinedLessons] = useState([]);
   
   
   useEffect(() => {
@@ -149,7 +150,44 @@ const handleLanguageChange = (event) => {
   };
 
   const selectedLesson = lessons[lessonIndex];
-
+  // const handleJoinLesson = (lessonId) => {
+  //   const userId = localStorage.getItem('userId')
+  //   axios
+  //     .post('http://localhost:5000/attendance/markattendance', {
+  //       lessonId: lessonId,
+  //       userId: userId, 
+  //     })
+  //     .then((response) => {
+        
+  //       console.log('Attendance marked:', response.data.message);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error marking attendance:', error);
+  //     });
+  // };
+  const handleJoinLesson = (lessonId) => {
+    // Check if the student has already joined the lesson
+    if (joinedLessons.includes(lessonId)) {
+      alert('You have already joined this lesson.');
+      return;
+    }
+    const userId = localStorage.getItem('userId')
+    // Make an API request to mark attendance for the selected lesson
+    axios
+    .post('http://localhost:5000/attendance/markattendance', {
+        lessonId: lessonId,
+        userId: userId, // Assuming you have the user ID
+      })
+      .then((response) => {
+        // Handle the response, e.g., show a success message
+        console.log('Attendance marked:', response.data.message);
+        // Update the joinedLessons state to indicate that the student has joined this lesson
+        setJoinedLessons([...joinedLessons, lessonId]);
+      })
+      .catch((error) => {
+        console.error('Error marking attendance:', error);
+      });
+  };
   return (
     <div className='start-learning-div'>
       <div className="chooselanguage">
@@ -174,25 +212,30 @@ const handleLanguageChange = (event) => {
           </option>
         ))}
       </select>
-      <button onClick={handleStartLearning} className='startstud'>Start Learning</button>
-      </div>
-      </div>
-      <div className='lesson-open'>{lessons.length > 0 && (
-        <div>
-          <h3>Available Lessons:</h3>
-          <ul>
-            {selectedLesson && (
-              <li key={selectedLesson.lesson_id}>
-                <h4 className='lesson-name-student'>{selectedLesson.lesson_name}</h4>
-                <h4>{selectedLesson.overview}</h4>
-                {selectedLesson.content.split(',').map((part, index) => (
-                      <p key={index}>{part}</p>
-                    ))}
-                
-                <button className='start-assessment-student' onClick={() => handleStartAssessment(selectedLesson.lesson_id)}>Start Assessment</button>
-              </li>
-            )}
-          </ul>
+      <button onClick={handleStartLearning}>Start Learning</button>
+      {lessons.length > 0 && (
+    <div>
+      <h3>Available Lessons:</h3>
+      <ul>
+        {selectedLesson && (
+          <li key={selectedLesson.lesson_id}>
+            <h4>{selectedLesson.lesson_name}</h4>
+            <ul>
+              {selectedLesson.content.split(',').map((item, index) => (
+                <li key={index}>{item.trim()}</li>
+              ))}
+            </ul>
+            <button onClick={() => handleStartAssessment(selectedLesson.lesson_id)}>Start Assessment</button>
+            {/* <button onClick={() => handleJoinLesson(selectedLesson.lesson_id)}>Join</button> */}
+            <button
+               onClick={() => handleJoinLesson(selectedLesson.lesson_id)}
+                 disabled={joinedLessons.includes(selectedLesson.lesson_id)}
+                 >
+                          Join
+               </button>
+          </li>
+        )}
+      </ul>
 
           <div>
             <button onClick={handlePreviousLesson} disabled={lessonIndex === 0} className='previstud'>
@@ -224,7 +267,7 @@ const handleLanguageChange = (event) => {
       )}
       </div>
 
-
+</div>
     </div>
   );
 }

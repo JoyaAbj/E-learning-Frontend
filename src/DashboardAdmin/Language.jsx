@@ -51,6 +51,7 @@ const Language = () => {
 
             const response = await axios.post(`${process.env.REACT_APP_API_URL}/languages/add`, formData);
             console.log(response.data);
+       
 
             setLanguageName('');
             setLanguageImage(null);
