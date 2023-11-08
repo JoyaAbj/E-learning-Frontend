@@ -4,9 +4,9 @@ import axios from 'axios';
 
 const Languages = () => {
     const [languagesdata, setLanguagesData] = useState([]);
-
+    const url = process.env.REACT_APP_API_URL;
     const fetchLanguagedata = () => {
-        axios.get(`${process.env.REACT_APP_API_URL}/languages/getAll`)
+        axios.get(`${url}/languages/getAll`)
           .then((response) => {
             setLanguagesData(response.data.data);
           })

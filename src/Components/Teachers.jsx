@@ -5,9 +5,9 @@ import axios from 'axios';
 function Teachers() {
 
     const [userdata, setUserData] = useState([]);
-
+    const url = process.env.REACT_APP_API_URL;
     const fetchteachersData = () => {
-    axios.get(`${process.env.REACT_APP_API_URL}/users/getAll/teacher`)
+    axios.get(`${url}/users/getAll/teacher`)
       .then((response) => {
        console.log(response.data.data);
         setUserData(response.data.data);

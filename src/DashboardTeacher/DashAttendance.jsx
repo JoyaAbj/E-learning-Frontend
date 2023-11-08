@@ -1,11 +1,118 @@
-import React from 'react'
 
-const DashAttendance = () => {
-  return (
-    <div>
-      <h1>DashAttendance</h1>
-    </div>
-  )
+// import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
+
+// function DashAttendance() {
+//   const [languages, setLanguages] = useState([]);
+//   const [levels, setLevels] = useState([]);
+//   const [lessons, setLessons] = useState([]);
+//   const [selectedLanguage, setSelectedLanguage] = useState('');
+//   const [selectedLevel, setSelectedLevel] = useState('');
+//   const [selectedLesson, setSelectedLesson] = useState('');
+//   const [attendance, setAttendance] = useState([]);
+//   const teacherId = localStorage.getItem('userId');
+//   useEffect(() => {
+//     // Fetch languages taught by the teacher
+    
+//     axios.get(`${url}/attendance/languages?teacherId=${teacherId}`)
+//       .then((response) => {
+//         setLanguages(response.data.languages);
+//       })
+//       .catch((error) => {
+//         console.error('Error fetching languages:', error);
+//       });
+//   }, [teacherId]);
+
+//   useEffect(() => {
+//     // Fetch levels based on the selected language
+//     if (selectedLanguage) {
+//       axios.get(`/teacher/levels?languageId=${selectedLanguage}`)
+//         .then((response) => {
+//           setLevels(response.data.levels);
+//         })
+//         .catch((error) => {
+//           console.error('Error fetching levels:', error);
+//         });
+//     }
+//   }, [selectedLanguage]);
+
+//   useEffect(() => {
+//     // Fetch lessons based on the selected level
+//     if (selectedLevel) {
+//       axios.get(`/teacher/lessons?levelId=${selectedLevel}`)
+//         .then((response) => {
+//           setLessons(response.data.lessons);
+//         })
+//         .catch((error) => {
+//           console.error('Error fetching lessons:', error);
+//         });
+//     }
+//   }, [selectedLevel]);
+
+//   useEffect(() => {
+//     // Fetch attendance records based on the selected lesson
+//     if (selectedLesson) {
+//       axios.get(`/teacher/attendance?lessonId=${selectedLesson}`)
+//         .then((response) => {
+//           setAttendance(response.data.attendance);
+//         })
+//         .catch((error) => {
+//           console.error('Error fetching attendance:', error);
+//         });
+//     }
+//   }, [selectedLesson]);
+
+//   return (
+//     <div>
+//       <h1>Teacher Dashboard</h1>
+
+//       {/* Language Selector */}
+//       <select value={selectedLanguage} onChange={(e) => setSelectedLanguage(e.target.value)}>
+//         <option value="">Select Language</option>
+//         {languages.map((language) => (
+//           <option key={language.language_id} value={language.language_id}>
+//             {language.language_name}
+//           </option>
+//         ))}
+//       </select>
+
+//       {/* Level Selector */}
+//       <select value={selectedLevel} onChange={(e) => setSelectedLevel(e.target.value)}>
+//         <option value="">Select Level</option>
+//         {levels.map((level) => (
+//           <option key={level.level_id} value={level.level_id}>
+//             {level.level_name}
+//           </option>
+//         ))}
+//       </select>
+
+//       {/* Lesson Selector */}
+//       <select value={selectedLesson} onChange={(e) => setSelectedLesson(e.target.value)}>
+//         <option value="">Select Lesson</option>
+//         {lessons.map((lesson) => (
+//           <option key={lesson.lesson_id} value={lesson.lesson_id}>
+//             {lesson.lesson_name}
+//           </option>
+//         ))}
+//       </select>
+
+//       {/* Attendance List */}
+//       <ul>
+//         {attendance.map((record) => (
+//           <li key={record.user_id}>
+//             {record.student_name} - {record.attendance_day}
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// }
+
+// export default DashAttendance;
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+function DashAttendance() {
+
 }
-
-export default DashAttendance
+export default DashAttendance;
