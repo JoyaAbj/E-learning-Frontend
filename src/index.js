@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import HeroSection from './Components/Herosection';
+import HomePage from './Components/HomePage';
+import DashboardSidebar from './DashboardTeacher/DashboardSidebar';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -1,0 +1,144 @@
+/*EnrollmentForm*/
+.enrollment-div{
+    border-radius: 0px 0px 20px 0px;
+    background: linear-gradient(110deg, #4853CD -7.71%, 
+rgba(72, 83, 205, 0.84) 43.03%,
+ rgba(72, 83, 205, 0.00) 103.27%);
+ display: flex;
+ justify-content: space-evenly;
+ align-items: center;
+ height: 100px;
+}
+/* .enroll-title{
+    color: white;
+    align-items: center;
+} */
+.select-language, .select-level{
+    color: white;
+}
+
+.dropdown-language, .dropdown-levels{
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    background: transparent;
+    border: none;
+}
+.options-enrollment{
+    color: white;
+    border-radius: 20px;
+    background: #4853CD;
+}
+.enroll-btn-student{
+    border-radius: 20px;
+background: #4853CD;
+box-shadow: 6px 6px 4px 0px rgba(0, 0, 0, 0.27);
+color: white;
+margin-left: 1%;
+padding: 5px;
+width: 10%;
+font-size: large;
+}
+
+/*StartLearning*/
+.start-learning-div{
+    border-radius: 0px 0px 20px 20px;
+    background: #FFD9E7;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    height: 625px;
+    /* flex-direction: column; */
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 2%;
+}
+.selectlangstud{
+    color:#EEC1BB;
+    background:#4853CD;
+    margin-left: 70px;
+    padding: 1%;
+    border-radius: 20px;
+    
+}
+ 
+.courstud{
+    color: rgba(72, 83, 205, 0.88);
+    font-size: 32px;
+    font-style: bold;
+}
+.langstud{
+    margin-right: 155px;
+    color: #4853CD;
+font-family: Poppins;
+font-size: 41px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+
+}
+
+
+
+.levelstud{
+    color:#EEC1BB;
+    background:#4853CD;
+    margin-left: 70px;
+    padding: 1%;
+    border-radius: 20px;
+}
+
+.startstud{
+    color:#EEC1BB;
+    background:#4853CD;
+    margin-left: 70px;
+    padding: 1%;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.avstud{
+    color:#4853CD;
+    background-color: white;
+}
+
+.avstudd{
+    color:#4853CD;
+    background-color: white;
+}
+
+.previstud{
+    color:#EEC1BB;
+    background:#4853CD;
+    border-color: #4853CD;
+    border-radius: 20px;
+    padding: 1%;
+}
+
+.previstudd, .start-assessment-student{
+    color:#EEC1BB;
+    background:#4853CD;
+    border-color: #4853CD;
+    border-radius: 20px;
+    padding: 1%;
+    margin: 20px;
+}
+
+.subsubstu{
+    color:#EEC1BB;
+    background:#4853CD;
+    border-color: #4853CD;
+}
+
+.subsubstuu{
+    color:#EEC1BB;
+    background:#4853CD;
+    border-color: #4853CD;
+}
+
+.lesson-name-student{
+    margin-top: 20px;
+}

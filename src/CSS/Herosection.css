@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.Header-Desktop {
+    border-radius: 0px 0px 80px 80px;
+    background: linear-gradient(110deg, #4853CD -7.71%, rgba(72, 83, 205, 0.84) 43.03%, rgba(72, 83, 205, 0.00) 103.27%);
+    margin-bottom: 50px;
+}
+
+.Mobile {
+    display: none;
+}
+
+.Header-Navbar {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 70px;
+}
+
+.Header-Logo {
+    font-size: 24px;
+}
+
+.Nav-Title {
+    text-decoration: none;
+    color: white;
+    margin: 0 30px;
+}
+
+.Header-login {
+    border-radius: 20px;
+    background: #4853CD;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.Header-Hero {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.Header-highlight {
+    color: #FFD9E7;
+}
+
+.Hero-description {
+    display: block;
+    font-size: 20px;
+}
+
+.Hero-description1 {
+    margin-left: 30px;
+    color: white;
+}
+
+.Hero-description1 {
+    padding-bottom: 1%;
+}
+
+.Hero-description2 {
+    width: 650px;
+    height: 200px;
+    border-radius: 20px;
+    border: 1px solid rgba(122, 245, 224, 0.12);
+    background: rgba(122, 245, 224, 0.25);
+    box-shadow: 6px 6px 4px 0px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(0.20000000298023224px);
+    color: white;
+    padding-top: 30px;
+    padding-left: 30px;
+}
+
+.Header-enroll {
+    width: 180px;
+    height: 50px;
+    color: #4853CD;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    background: #FFD9E7;
+    border: none;
+    box-shadow: 6px 6px 4px 0px rgba(0, 0, 0, 0.27);
+    margin-top: 30px;
+    margin-left: 35%;
+}
+
+.Header-image {
+    height: 350px;
+    width: 350px;
+}
+
+.login-btn {
+    text-decoration: none;
+    color: white;
+}
+
+.enroll-btn {
+    text-decoration: none;
+}
+
+/*Tablet*/
+@media screen and (min-width:767px) and (max-width:1023px) {
+    .Mobile {
+        display: none;
+    }
+
+    .Header {
+        border-radius: 0px 0px 50px 50px;
+    }
+
+    .Header-Navbar {
+        padding: 20px 20px;
+    }
+
+    .Nav-Title {
+        margin: 0 10px;
+    }
+
+    .Header-Hero {
+        margin: 10px 50px;
+    }
+
+    .Hero-description2 {
+        width: 380px;
+        font-size: medium;
+    }
+
+    .Header-enroll {
+        width: 130px;
+        height: 40px;
+        margin-top: 10px;
+        font-size: medium;
+    }
+
+    .Header-image {
+        margin-left: 20px;
+        height: 300px;
+        width: 300px;
+    }
+}
+
+/*Phone*/
+@media (max-width: 766px) {
+    .Mobile {
+        display: block;
+        height: 350px;
+    }
+
+    .Desktop {
+        display: none;
+    }
+
+    .Header-Desktop {
+        display: none;
+    }
+
+    .Header-Mobile {
+        border-radius: 0px 0px 50px 50px;
+        background: linear-gradient(110deg, #4853CD -7.71%, rgba(72, 83, 205, 0.84) 43.03%, rgba(72, 83, 205, 0.00) 103.27%);
+        margin-bottom: 50px;
+    }
+
+    .Mobile-Navbar {
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        color: white;
+        display: flex;
+    }
+
+    .Mobile-Burger {
+        background-color: transparent;
+        border: none;
+        color: white;
+        cursor: pointer;
+        width: 70px;
+    }
+
+    .Mobile-Nav {
+        display: none;
+        flex-direction: column;
+    }
+
+    .Mobile-Nav.active {
+        display: flex;
+        position: absolute;
+        top: 75px;
+        left: -1px;
+        z-index: 1;
+        width: 100%;
+        align-items: center;
+        padding: 5px;
+        background: #FFD9E7;
+        opacity: 0.7;
+        border: none;
+        box-shadow: 6px 6px 4px 0px rgba(0, 0, 0, 0.27);
+    }
+
+    .Mobile-Nav-Title {
+        text-decoration: none;
+        color: #4853CD;
+    }
+
+    .Mobile-Logo {
+        padding-top: 10px;
+        text-align: center;
+    }
+
+    .Mobile-Login {
+        border-radius: 20px;
+        background: #4853CD;
+        color: white;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        width: 70px;
+    }
+
+    .Mobile-Header-Hero {
+        width: 300px;
+        margin: auto;
+        align-items: center;
+    }
+
+    .Mobile-Header-highlight {
+        color: #FFD9E7;
+    }
+
+    .Mobile-Hero-description {
+        display: block;
+        font-size: 14px;
+    }
+
+    .Mobile-Hero-description1 {
+        margin-left: 15px;
+        color: white;
+        padding-bottom: 1%;
+    }
+
+    .Mobile-Hero-description2 {
+        width: 300px;
+        height: 170px;
+        border-radius: 20px;
+        border: 1px solid rgba(122, 245, 224, 0.12);
+        background: rgba(122, 245, 224, 0.25);
+        box-shadow: 6px 6px 4px 0px rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(0.20000000298023224px);
+        color: white;
+        padding: 15px;
+    }
+
+    .Mobile-Header-enroll {
+        width: 140px;
+        height: 30px;
+        color: #4853CD;
+        text-align: center;
+        font-size: 14px;
+        padding: 5px;
+        border-radius: 20px;
+        background: #FFD9E7;
+        border: none;
+        box-shadow: 6px 6px 4px 0px rgba(0, 0, 0, 0.27);
+        align-items: center;
+        margin-top: 20px;
+        margin-left: 28%;
+    }
+}

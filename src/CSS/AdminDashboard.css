@@ -1,0 +1,193 @@
+.Admin-Dropdown {
+    margin-top: 2%;
+    color: #4853CD;
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 20px;
+    background: #FFD9E7;
+    margin-left: 42%;
+    border: none;
+    cursor: pointer;
+    padding: 1%;
+    width: 200px;
+}
+
+.create-user {
+    border-radius: 20px;
+    background: rgba(72, 83, 205, 0.54);
+    width: 90%;
+    height: 250px;
+    padding: 1%;
+    margin: 2% 5%;
+}
+
+.create-user-title {
+    color: #FFF;
+    text-align: left;
+    font-family: Poppins;
+    font-size: 40px;
+    /* font-style: normal;
+    font-weight: 700;
+    line-height: normal; */
+}
+
+.create-user-form {
+    display: flex;
+    padding: 1%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.create-user-input {
+    border-radius: 20px;
+    background: #EBEBEB;
+    border: none;
+    padding: 1%;
+}
+
+.create-user-button {
+    margin-top: 2%;
+    color: #4853CD;
+    /* text-align: center; */
+    font-family: Poppins;
+    font-size: 20px;
+    /* font-style: normal; */
+    font-weight: 500;
+    /* line-height: normal; */
+    border-radius: 20px;
+    background: #FFD9E7;
+    margin-left: 42%;
+    border: none;
+    cursor: pointer;
+    padding: 1%;
+    width: 200px;
+}
+
+.users-admin {
+    margin-top: 2%;
+    color: #4853CD;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 40px;
+    /* font-style: normal;
+    font-weight: 700;
+    line-height: normal; */
+}
+
+.select-users-admin {
+    color: #4853CD;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 25px;
+    /* font-style: normal; */
+    font-weight: 500;
+    /* line-height: normal; */
+    border-radius: 20px;
+    background: #FFD9E7;
+    border: none;
+    margin: 1% 42.5%;
+    width: 15%;
+}
+
+.admin-table-th {
+    background-color: transparent;
+    color: #4853CD;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 40px;
+    /* font-style: normal;
+    font-weight: 700;
+    line-height: normal; */
+}
+
+.user-name {
+    color: #4853CD;
+    font-family: Poppins;
+    font-size: 20px;
+    /* font-style: normal;
+    font-weight: 400;
+    line-height: normal; */
+}
+
+.edit-delete-btn-admin {
+    border-radius: 20px;
+    background: #FFD9E7;
+    color: #4853CD;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 18px;
+    /* font-style: normal;
+    font-weight: 400;
+    line-height: normal; */
+    border: none;
+    width: 100px;
+    padding: 3%;
+    margin: 12px;
+}
+
+.admin-table {
+    margin: 1% auto;
+}
+
+.language-table {
+    background-color: transparent;
+    color: #4853CD;
+    font-size: x-large;
+}
+
+.language-input {
+    margin: 2% 4%;
+    border-radius: 20px;
+    background: #EBEBEB;
+    border: none;
+    padding: 1%;
+    text-align: center;
+}
+
+.language-button {
+    border-radius: 20px;
+    background: #FFD9E7;
+    color: #4853CD;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 18px;
+    border: none;
+    width: 200px;
+    height: 50px;
+}
+
+.language-dashboard {
+    margin: 1% 18%;
+}
+
+.language-dashboard1 {
+    margin: 1% 27%;
+}
+
+.language-td {
+    text-align: center;
+}
+
+.sign-out-text {
+    margin-top: 5%;
+    color: #4853CD;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 18px;
+}
+
+.sign-out-button {
+    margin-top: 2%;
+    color: #4853CD;
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 20px;
+    background: #FFD9E7;
+    margin-left: 42%;
+    border: none;
+    cursor: pointer;
+    padding: 1%;
+    width: 200px;
+}
