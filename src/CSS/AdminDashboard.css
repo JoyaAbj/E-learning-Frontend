@@ -16,10 +16,10 @@
 .create-user {
     border-radius: 20px;
     background: rgba(72, 83, 205, 0.54);
-    width: 90%;
+    width: 70%;
     height: 250px;
     padding: 1%;
-    margin: 2% 5%;
+    margin-left: 24%;
 }
 
 .create-user-title {
@@ -27,9 +27,6 @@
     text-align: left;
     font-family: Poppins;
     font-size: 40px;
-    /* font-style: normal;
-    font-weight: 700;
-    line-height: normal; */
 }
 
 .create-user-form {
@@ -49,12 +46,9 @@
 .create-user-button {
     margin-top: 2%;
     color: #4853CD;
-    /* text-align: center; */
     font-family: Poppins;
     font-size: 20px;
-    /* font-style: normal; */
     font-weight: 500;
-    /* line-height: normal; */
     border-radius: 20px;
     background: #FFD9E7;
     margin-left: 42%;
@@ -65,14 +59,11 @@
 }
 
 .users-admin {
-    margin-top: 2%;
     color: #4853CD;
     text-align: center;
     font-family: Poppins;
     font-size: 40px;
-    /* font-style: normal;
-    font-weight: 700;
-    line-height: normal; */
+    margin-left: 10%;
 }
 
 .select-users-admin {
@@ -80,13 +71,11 @@
     text-align: center;
     font-family: Poppins;
     font-size: 25px;
-    /* font-style: normal; */
     font-weight: 500;
-    /* line-height: normal; */
     border-radius: 20px;
     background: #FFD9E7;
     border: none;
-    margin: 1% 42.5%;
+    margin: 1% 47%;
     width: 15%;
 }
 
@@ -96,18 +85,12 @@
     text-align: center;
     font-family: Poppins;
     font-size: 40px;
-    /* font-style: normal;
-    font-weight: 700;
-    line-height: normal; */
 }
 
 .user-name {
     color: #4853CD;
     font-family: Poppins;
     font-size: 20px;
-    /* font-style: normal;
-    font-weight: 400;
-    line-height: normal; */
 }
 
 .edit-delete-btn-admin {
@@ -117,9 +100,6 @@
     text-align: center;
     font-family: Poppins;
     font-size: 18px;
-    /* font-style: normal;
-    font-weight: 400;
-    line-height: normal; */
     border: none;
     width: 100px;
     padding: 3%;
@@ -127,7 +107,11 @@
 }
 
 .admin-table {
-    margin: 1% auto;
+    margin-left: 27%;
+}
+
+.Available-language-table {
+    margin-left: 40%;
 }
 
 .language-table {
@@ -158,11 +142,11 @@
 }
 
 .language-dashboard {
-    margin: 1% 18%;
+    margin-left: 25%;
 }
 
 .language-dashboard1 {
-    margin: 1% 27%;
+    margin-left: 30%;
 }
 
 .language-td {
@@ -170,6 +154,7 @@
 }
 
 .sign-out-text {
+    margin-left: 15%;
     margin-top: 5%;
     color: #4853CD;
     text-align: center;
@@ -185,9 +170,40 @@
     font-weight: 500;
     border-radius: 20px;
     background: #FFD9E7;
-    margin-left: 42%;
+    margin-left: 50%;
     border: none;
     cursor: pointer;
     padding: 1%;
     width: 200px;
+}
+
+.Admin-Header {
+    padding: 1%;
+}
+
+.Admin-Sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 0px 0px 20px 20px;
+    background: linear-gradient(283deg, #4853CD -8.86%, rgba(72, 83, 205, 0.84) 53.99%, rgba(72, 83, 205, 0.00) 128.61%);
+    padding-top: 80px;
+}
+
+.Sidebar-Button {
+    background-color: transparent;
+    border: none;
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.Sidebar-Button:hover {
+    background: rgba(72, 83, 205, 0.88);
+    width: 100%;
 }

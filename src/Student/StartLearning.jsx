@@ -154,6 +154,7 @@ const handleLanguageChange = (event) => {
     <div className='start-learning-div'>
       <div className="chooselanguage">
       < h2 className='courstud'>My courses</h2>
+      <div className='choose-lesson'>
       <label htmlFor="language" className='langstud'>Select Language:</label>
       <select id="language" name="language" className='selectlangstud' value={selectedLanguage} onChange={handleLanguageChange}>
         <option value="" >Select a Language</option>
@@ -174,6 +175,7 @@ const handleLanguageChange = (event) => {
         ))}
       </select>
       <button onClick={handleStartLearning} className='startstud'>Start Learning</button>
+      </div>
       </div>
       <div className='lesson-open'>{lessons.length > 0 && (
         <div>
