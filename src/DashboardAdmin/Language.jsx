@@ -13,7 +13,7 @@ const Language = () => {
     const [selectedLanguage, setSelectedLanguage] = useState('');
     const [assignSuccessMessage, setAssignSuccessMessage] = useState('');
     const [assignErrorMessage, setAssignErrorMessage] = useState('');
-
+    const url = process.env.REACT_APP_API_URL;
     useEffect(() => {
         fetchAvailableLanguages();
         fetchTeachers();
@@ -21,7 +21,7 @@ const Language = () => {
 
     const fetchAvailableLanguages = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/languages/newLanguage');
+            const response = await axios.get(`${url}/languages/newLanguage`);
             setAvailableLanguages(response.data);
         } catch (error) {
             console.error('Error fetching available languages:', error);
@@ -30,7 +30,7 @@ const Language = () => {
 
     const fetchTeachers = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/users/getAll/teacher');
+            const response = await axios.get(`${url}/users/getAll/teacher`);
             if (Array.isArray(response.data.data)) {
                 setTeachers(response.data.data);
             } else {
@@ -48,7 +48,7 @@ const Language = () => {
             formData.append('language_name', language_name);
             formData.append('image', language_img);
 
-            const response = await axios.post('http://localhost:5000/languages/add', formData);
+            const response = await axios.post(`${url}/languages/add`, formData);
             console.log(response.data);
 
             setLanguageName('');
@@ -78,7 +78,7 @@ const Language = () => {
 
             console.log(language_id);
             try {
-                const response = await axios.put(`http://localhost:5000/languages/assign/${selectedTeacher}/${language_id}`);
+                const response = await axios.put(`${url}/languages/assign/${selectedTeacher}/${language_id}`);
 
                 console.log(response.data);
                 if (response.data) {
@@ -113,7 +113,7 @@ const Language = () => {
 
     const handleRemoveLanguage = async (languageId) => {
         try {
-            const response = await axios.delete(`http://localhost:5000/languages/delete/${languageId}`);
+            const response = await axios.delete(`${url}/languages/delete/${languageId}`);
             console.log(response.data);
             fetchAvailableLanguages();
 

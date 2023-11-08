@@ -16,13 +16,13 @@ function StartLearning({ userId }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [assessmentInput, setAssessmentInput] = useState('');
   const [joinedLessons, setJoinedLessons] = useState([]);
-  
+  const url = process.env.REACT_APP_API_URL;
   
   useEffect(() => {
     // if (userId && selectedLanguage) {
     //   console.log(userId)
       // Fetch enrolled levels for the selected language and user
-      axios.get(`http://localhost:5000/enroll/get/languagebystudent/${localStorage.getItem('userId')};`)
+      axios.get(`${url}/enroll/get/languagebystudent/${localStorage.getItem('userId')};`)
     .then((response) => {
       console.log(response.data.data)
       setEnrolledLevels(response.data.data);
@@ -51,7 +51,7 @@ const handleLanguageChange = (event) => {
   //   if (userId && selectedLanguage) {
   //     // Fetch enrolled levels for the selected language
   //     axios
-  //       .get(`http://localhost:5000/enroll/get/enrolledLevels`)
+  //       .get(`${url}/enroll/get/enrolledLevels`)
   //       .then((response) => {
   //         setEnrolledLevels(response.data);
   //         console.log(response.data);
@@ -66,7 +66,7 @@ const handleLanguageChange = (event) => {
   
   const handleStartLearning = () => {
     axios
-      .get(`http://localhost:5000/enroll/get/lessons?language=${selectedLanguage}&level=${selectedLevelName}`)
+      .get(`${url}/enroll/get/lessons?language=${selectedLanguage}&level=${selectedLevelName}`)
       .then((response) => {
         setLessons(response.data);
       })
@@ -81,7 +81,7 @@ const handleLanguageChange = (event) => {
   const handleStartAssessment = (lessonId) => {
     // Make an API request to fetch the assessment details for the selected lesson
     axios
-      .get(`http://localhost:5000/userAssessment/get/lessonIDAssessment/${localStorage.getItem('userId')}/${lessonId}`)
+      .get(`${url}/userAssessment/get/lessonIDAssessment/${localStorage.getItem('userId')}/${lessonId}`)
       .then((response) => {
         console.log(response.data.data)
         // Handle the response and show the assessment details to the user
@@ -112,7 +112,7 @@ const handleLanguageChange = (event) => {
     if (assessmentId && userId && assessmentInput) {
       // Make an API request to create the user_assessment row and set submission to 'Submitted'
       axios
-        .post(`http://localhost:5000/userAssessment/post/submitUserAssessment`, {
+        .post(`${url}/userAssessment/post/submitUserAssessment`, {
           assessmentId: assessmentId,
           studentId: userId,
           assessmentInput: assessmentInput,
@@ -153,7 +153,7 @@ const handleLanguageChange = (event) => {
   // const handleJoinLesson = (lessonId) => {
   //   const userId = localStorage.getItem('userId')
   //   axios
-  //     .post('http://localhost:5000/attendance/markattendance', {
+  //     .post('${url}/attendance/markattendance', {
   //       lessonId: lessonId,
   //       userId: userId, 
   //     })
@@ -174,7 +174,7 @@ const handleLanguageChange = (event) => {
     const userId = localStorage.getItem('userId')
     // Make an API request to mark attendance for the selected lesson
     axios
-    .post('http://localhost:5000/attendance/markattendance', {
+    .post(`${url}/attendance/markattendance`, {
         lessonId: lessonId,
         userId: userId, // Assuming you have the user ID
       })

@@ -11,11 +11,11 @@ function Dashprofile() {
   const [defaultLanguageId, setDefaultLanguageId] = useState(""); // Set the default language ID to English (ID 17)
   const [profileUrl, setProfileUrl] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
-  
+  const url = process.env.REACT_APP_API_URL;
   
 
   const fetchUserData = () => {
-    axios.get(`http://localhost:5000/users/get/${localStorage.getItem('userId')}`)
+    axios.get(`${url}/users/get/${localStorage.getItem('userId')}`)
       .then((response) => {
         console.log(response.data.profile_url);
         setUser(response.data);
@@ -31,7 +31,7 @@ function Dashprofile() {
   };
 
   const updateUserLanguage = (languageId) => {
-    axios.put(`http://localhost:5000/users/teacher/${user.id}`, { language_id: languageId })
+    axios.put(`${url}/users/teacher/${user.id}`, { language_id: languageId })
       .then((response) => {
         if (response.status === 201) {
           console.log(response.setSelectedLanguageId)
@@ -54,7 +54,7 @@ function Dashprofile() {
 
 
   const fetchlanguage = () => {
-    axios.get(`http://localhost:5000/languages/getbyTeacherId/${localStorage.getItem('userId')}`)
+    axios.get(`${url}/languages/getbyTeacherId/${localStorage.getItem('userId')}`)
     .then((response) => {
         console.log(response.data)
         setLanguageName(response?.data?.data[0]?.language_name);

@@ -13,7 +13,7 @@ const Admin = () => {
     const [signupPassword, setSignupPassword] = useState('');
     const [signupRole, setSignupRole] = useState('');
     const [selectedOption, setSelectedOption] = useState('createUser');
-
+    const url = process.env.REACT_APP_API_URL;
     const handleNavigationChange = (e) => {
         setSelectedOption(e.target.value);
     };
@@ -30,7 +30,7 @@ const Admin = () => {
             return;
         }
 
-        fetch('http://localhost:5000/users/signup', {
+        fetch(`${url}/users/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
