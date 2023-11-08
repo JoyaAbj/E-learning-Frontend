@@ -101,12 +101,18 @@ const AllUsers = () => {
 
   const onDeleteSuccess = () => {
     setDeleteSuccessMessage('User deleted successfully');
-    setTimeout(() => setDeleteSuccessMessage(''), 30000);
+    setTimeout(() => {
+      setDeleteSuccessMessage('');
+      window.location.reload();
+    }, 5000);
   };
 
   const onUpdateSuccess = () => {
     setUpdateSuccessMessage('User updated successfully');
-    setTimeout(() => setUpdateSuccessMessage(''), 30000);
+    setTimeout(() => {
+      setUpdateSuccessMessage('');
+      window.location.reload();
+    }, 5000);
   };
 
   const fetchUsersByRole = async (role, usersState) => {
@@ -135,12 +141,12 @@ const AllUsers = () => {
         <option value="admin">Admins</option>
       </select>
       {deleteSuccessMessage && (
-        <p className="success-message" style={{ textAlign: 'center' }}>
+        <p className="success-message" style={{ textAlign: 'center', marginLeft: '120px' }}>
           {deleteSuccessMessage}
         </p>
       )}
       {updateSuccessMessage && (
-        <p className="success-message" style={{ textAlign: 'center' }}>
+        <p className="success-message" style={{ textAlign: 'center', marginLeft: '120px' }}>
           {updateSuccessMessage}
         </p>
       )}

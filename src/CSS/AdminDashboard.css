@@ -75,7 +75,8 @@
     border-radius: 20px;
     background: #FFD9E7;
     border: none;
-    margin: 1% 47%;
+    margin-left: 47%;
+    margin-top: 1%;
     width: 15%;
 }
 
@@ -155,7 +156,7 @@
 
 .sign-out-text {
     margin-left: 15%;
-    margin-top: 5%;
+    margin-top: 2%;
     color: #4853CD;
     text-align: center;
     font-family: Poppins;
@@ -178,7 +179,12 @@
 }
 
 .Admin-Header {
-    padding: 1%;
+    position: fixed;
+    margin-top: 1%;
+}
+
+.Admin-Content {
+    margin-top: 2%;
 }
 
 .Admin-Sidebar {
