@@ -8,7 +8,7 @@ const UserTable = ({ users, role }) => {
 
   const deleteUser = (id) => {
     axios
-      .delete(`http://localhost:5000/users/delete/${id}`, { params: { role } })
+      .delete(`${process.env.REACT_APP_API_URL}/users/delete/${id}`, { params: { role } })
       .then((response) => {
         console.log('User deleted successfully');
       })
@@ -22,7 +22,7 @@ const UserTable = ({ users, role }) => {
       const { name, email, password } = updatedUserData;
 
       axios
-        .put(`http://localhost:5000/users/update/${id}`, { name, email, password })
+        .put(`${process.env.REACT_APP_API_URL}/users/update/${id}`, { name, email, password })
         .then((response) => {
           console.log('User updated successfully');
           setEditUserId(null);
@@ -100,7 +100,7 @@ const NewUsers = () => {
 
   const fetchUsersByRole = async (role, usersState) => {
     try {
-      const response = await axios.get(`http://localhost:5000/users/getAll/${role}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/users/getAll/${role}`);
       const users = response.data.data;
       console.log(response.data.data)
       usersState(users);

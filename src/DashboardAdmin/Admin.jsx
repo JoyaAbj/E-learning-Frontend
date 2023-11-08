@@ -30,7 +30,7 @@ const Admin = () => {
             return;
         }
 
-        fetch('http://localhost:5000/users/signup', {
+        fetch(`${process.env.REACT_APP_API_URL}/users/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -15,7 +15,7 @@ const Dashlesson = () => {
 
   useEffect(() => {
     // Fetch levels when the component mounts
-    axios.get(`http://localhost:5000/levels/getBylanguage/${localStorage.getItem('language_id')}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/levels/getBylanguage/${localStorage.getItem('language_id')}`)
       .then(response => {
         setLevels(response.data.data);
       })
@@ -27,7 +27,7 @@ const Dashlesson = () => {
   useEffect(() => {
     if (selectedLevel) {
       // Fetch lessons when the selectedLevel changes
-      axios.get(`http://localhost:5000/lessons/getByLevel/${selectedLevel}`)
+      axios.get(`${process.env.REACT_APP_API_URL}/lessons/getByLevel/${selectedLevel}`)
         .then(response => {
           setLessons(response.data.data);
         })
@@ -58,7 +58,7 @@ const Dashlesson = () => {
       level_id: selectedLevel,
     };
 
-    axios.post('http://localhost:5000/lessons/add', newLesson)
+    axios.post(`${process.env.REACT_APP_API_URL}/lessons/add`, newLesson)
       .then(response => {
         console.log('Lesson added successfully');
         setLessonAddedMessage('Lesson added successfully');
@@ -74,7 +74,7 @@ const Dashlesson = () => {
   const handleDeleteLesson = (lessonId) => {
     const confirmDelete = window.confirm("Are you sure you want to delete this lesson?");
     if (confirmDelete) {
-      axios.delete(`http://localhost:5000/lessons/delete/${lessonId}`)
+      axios.delete(`${process.env.REACT_APP_API_URL}/lessons/delete/${lessonId}`)
         .then(response => {
           console.log('Lesson deleted successfully');
           setLessons(lessons.filter(lesson => lesson.lesson_id !== lessonId));
@@ -86,7 +86,7 @@ const Dashlesson = () => {
   };
 
   const handleSaveLesson = () => {
-    axios.put(`http://localhost:5000/lessons/update/${editLesson.lesson_id}`, editLesson)
+    axios.put(`${process.env.REACT_APP_API_URL}/lessons/update/${editLesson.lesson_id}`, editLesson)
       .then(response => {
         console.log('Lesson updated successfully');
         setLessonUpdatedMessage('Lesson updated successfully');

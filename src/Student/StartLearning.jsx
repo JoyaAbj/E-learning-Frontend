@@ -21,7 +21,7 @@ function StartLearning({ userId }) {
     // if (userId && selectedLanguage) {
     //   console.log(userId)
       // Fetch enrolled levels for the selected language and user
-      axios.get(`http://localhost:5000/enroll/get/languagebystudent/${localStorage.getItem('userId')};`)
+      axios.get(`${process.env.REACT_APP_API_URL}/enroll/get/languagebystudent/${localStorage.getItem('userId')};`)
     .then((response) => {
       console.log(response.data.data)
       setEnrolledLevels(response.data.data);
@@ -50,7 +50,7 @@ const handleLanguageChange = (event) => {
   //   if (userId && selectedLanguage) {
   //     // Fetch enrolled levels for the selected language
   //     axios
-  //       .get(`http://localhost:5000/enroll/get/enrolledLevels`)
+  //       .get(`${process.env.REACT_APP_API_URL}/enroll/get/enrolledLevels`)
   //       .then((response) => {
   //         setEnrolledLevels(response.data);
   //         console.log(response.data);
@@ -65,7 +65,7 @@ const handleLanguageChange = (event) => {
   
   const handleStartLearning = () => {
     axios
-      .get(`http://localhost:5000/enroll/get/lessons?language=${selectedLanguage}&level=${selectedLevelName}`)
+      .get(`${process.env.REACT_APP_API_URL}/enroll/get/lessons?language=${selectedLanguage}&level=${selectedLevelName}`)
       .then((response) => {
         setLessons(response.data);
       })
@@ -80,7 +80,7 @@ const handleLanguageChange = (event) => {
   const handleStartAssessment = (lessonId) => {
     // Make an API request to fetch the assessment details for the selected lesson
     axios
-      .get(`http://localhost:5000/userAssessment/get/lessonIDAssessment/${localStorage.getItem('userId')}/${lessonId}`)
+      .get(`${process.env.REACT_APP_API_URL}/userAssessment/get/lessonIDAssessment/${localStorage.getItem('userId')}/${lessonId}`)
       .then((response) => {
         console.log(response.data.data)
         // Handle the response and show the assessment details to the user
@@ -111,7 +111,7 @@ const handleLanguageChange = (event) => {
     if (assessmentId && userId && assessmentInput) {
       // Make an API request to create the user_assessment row and set submission to 'Submitted'
       axios
-        .post(`http://localhost:5000/userAssessment/post/submitUserAssessment`, {
+        .post(`${process.env.REACT_APP_API_URL}/userAssessment/post/submitUserAssessment`, {
           assessmentId: assessmentId,
           studentId: userId,
           assessmentInput: assessmentInput,

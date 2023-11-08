@@ -12,7 +12,7 @@ function Login({ setUserRole }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:5000/users/login', {
+    fetch(`${process.env.REACT_APP_API_URL}/users/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ function Login({ setUserRole }) {
   };
 
   const fetchUser = async () =>{
-    const response = axios.get(`http://localhost:5000/users/getAll/${setUserRole}`)
+    const response = axios.get(`${process.env.REACT_APP_API_URL}/users/getAll/${setUserRole}`)
     const data = await response.json();
     localStorage.setItem("userId", data.id)
   }
@@ -73,7 +73,7 @@ function Login({ setUserRole }) {
       return;
     }
 
-    fetch('http://localhost:5000/users/signup', {
+    fetch(`${process.env.REACT_APP_API_URL}/users/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

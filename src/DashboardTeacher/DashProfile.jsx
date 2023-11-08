@@ -15,7 +15,7 @@ function Dashprofile() {
   
 
   const fetchUserData = () => {
-    axios.get(`http://localhost:5000/users/get/${localStorage.getItem('userId')}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/users/get/${localStorage.getItem('userId')}`)
       .then((response) => {
         console.log(response.data.profile_url);
         setUser(response.data);
@@ -31,7 +31,7 @@ function Dashprofile() {
   };
 
   const updateUserLanguage = (languageId) => {
-    axios.put(`http://localhost:5000/users/teacher/${user.id}`, { language_id: languageId })
+    axios.put(`${process.env.REACT_APP_API_URL}/users/teacher/${user.id}`, { language_id: languageId })
       .then((response) => {
         if (response.status === 201) {
           console.log(response.setSelectedLanguageId)
@@ -54,7 +54,7 @@ function Dashprofile() {
 
 
   const fetchlanguage = () => {
-    axios.get(`http://localhost:5000/languages/getbyTeacherId/${localStorage.getItem('userId')}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/languages/getbyTeacherId/${localStorage.getItem('userId')}`)
     .then((response) => {
         console.log(response.data)
         setLanguageName(response?.data?.data[0]?.language_name);

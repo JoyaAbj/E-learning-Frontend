@@ -6,7 +6,7 @@ const Languages = () => {
     const [languagesdata, setLanguagesData] = useState([]);
 
     const fetchLanguagedata = () => {
-        axios.get('http://localhost:5000/languages/getAll')
+        axios.get(`${process.env.REACT_APP_API_URL}/languages/getAll`)
           .then((response) => {
             setLanguagesData(response.data.data);
           })

@@ -7,7 +7,7 @@ function Teachers() {
     const [userdata, setUserData] = useState([]);
 
     const fetchteachersData = () => {
-    axios.get('http://localhost:5000/users/getAll/teacher')
+    axios.get(`${process.env.REACT_APP_API_URL}/users/getAll/teacher`)
       .then((response) => {
        console.log(response.data.data);
         setUserData(response.data.data);
