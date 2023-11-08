@@ -16,13 +16,13 @@ function StartLearning({ userId }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [assessmentInput, setAssessmentInput] = useState('');
   const [joinedLessons, setJoinedLessons] = useState([]);
-  
+  const url = process.env.REACT_APP_API_URL;
   
   useEffect(() => {
     // if (userId && selectedLanguage) {
     //   console.log(userId)
       // Fetch enrolled levels for the selected language and user
-      axios.get(`http://localhost:5000/enroll/get/languagebystudent/${localStorage.getItem('userId')};`)
+      axios.get(`${url}/enroll/get/languagebystudent/${localStorage.getItem('userId')};`)
     .then((response) => {
       console.log(response.data.data)
       setEnrolledLevels(response.data.data);
@@ -51,7 +51,7 @@ const handleLanguageChange = (event) => {
   //   if (userId && selectedLanguage) {
   //     // Fetch enrolled levels for the selected language
   //     axios
-  //       .get(`http://localhost:5000/enroll/get/enrolledLevels`)
+  //       .get(`${url}/enroll/get/enrolledLevels`)
   //       .then((response) => {
   //         setEnrolledLevels(response.data);
   //         console.log(response.data);
@@ -66,7 +66,7 @@ const handleLanguageChange = (event) => {
   
   const handleStartLearning = () => {
     axios
-      .get(`http://localhost:5000/enroll/get/lessons?language=${selectedLanguage}&level=${selectedLevelName}`)
+      .get(`${url}/enroll/get/lessons?language=${selectedLanguage}&level=${selectedLevelName}`)
       .then((response) => {
         setLessons(response.data);
       })
@@ -81,7 +81,7 @@ const handleLanguageChange = (event) => {
   const handleStartAssessment = (lessonId) => {
     // Make an API request to fetch the assessment details for the selected lesson
     axios
-      .get(`http://localhost:5000/userAssessment/get/lessonIDAssessment/${localStorage.getItem('userId')}/${lessonId}`)
+      .get(`${url}/userAssessment/get/lessonIDAssessment/${localStorage.getItem('userId')}/${lessonId}`)
       .then((response) => {
         console.log(response.data.data)
         // Handle the response and show the assessment details to the user
@@ -112,7 +112,7 @@ const handleLanguageChange = (event) => {
     if (assessmentId && userId && assessmentInput) {
       // Make an API request to create the user_assessment row and set submission to 'Submitted'
       axios
-        .post(`http://localhost:5000/userAssessment/post/submitUserAssessment`, {
+        .post(`${url}/userAssessment/post/submitUserAssessment`, {
           assessmentId: assessmentId,
           studentId: userId,
           assessmentInput: assessmentInput,
@@ -153,7 +153,7 @@ const handleLanguageChange = (event) => {
   // const handleJoinLesson = (lessonId) => {
   //   const userId = localStorage.getItem('userId')
   //   axios
-  //     .post('http://localhost:5000/attendance/markattendance', {
+  //     .post('${url}/attendance/markattendance', {
   //       lessonId: lessonId,
   //       userId: userId, 
   //     })
@@ -174,7 +174,7 @@ const handleLanguageChange = (event) => {
     const userId = localStorage.getItem('userId')
     // Make an API request to mark attendance for the selected lesson
     axios
-    .post('http://localhost:5000/attendance/markattendance', {
+    .post(`${url}/attendance/markattendance`, {
         lessonId: lessonId,
         userId: userId, // Assuming you have the user ID
       })
@@ -191,6 +191,7 @@ const handleLanguageChange = (event) => {
   return (
     <div className='start-learning-div'>
       <div className="chooselanguage">
+      <div className='choose-lesson'>
       < h2 className='courstud'>My courses</h2>
       <label htmlFor="language" className='langstud'>Select Language:</label>
       <select id="language" name="language" className='selectlangstud' value={selectedLanguage} onChange={handleLanguageChange}>
@@ -211,22 +212,23 @@ const handleLanguageChange = (event) => {
           </option>
         ))}
       </select>
-      <button onClick={handleStartLearning}>Start Learning</button>
+      <button className='start-assessment-student' onClick={handleStartLearning}>Start Learning</button>
+      </div>
       {lessons.length > 0 && (
-    <div>
-      <h3>Available Lessons:</h3>
+    <div >
+      <h3 className='courstud'>Available Lessons:</h3>
       <ul>
         {selectedLesson && (
           <li key={selectedLesson.lesson_id}>
-            <h4>{selectedLesson.lesson_name}</h4>
-            <ul>
+            <h4 className='lesson-name-student'>{selectedLesson.lesson_name}</h4>
+            <h4 className='lesson-name-student'>{selectedLesson.overview}</h4>
               {selectedLesson.content.split(',').map((item, index) => (
                 <li key={index}>{item.trim()}</li>
               ))}
-            </ul>
-            <button onClick={() => handleStartAssessment(selectedLesson.lesson_id)}>Start Assessment</button>
+           
+            <button className='start-assessment-student' onClick={() => handleStartAssessment(selectedLesson.lesson_id)}>Start Assessment</button>
             {/* <button onClick={() => handleJoinLesson(selectedLesson.lesson_id)}>Join</button> */}
-            <button
+            <button className='start-assessment-student'
                onClick={() => handleJoinLesson(selectedLesson.lesson_id)}
                  disabled={joinedLessons.includes(selectedLesson.lesson_id)}
                  >
@@ -248,14 +250,20 @@ const handleLanguageChange = (event) => {
       )}
 
       {isModalOpen && assessmentDetails && (
-        <Modal isOpen={isModalOpen} onClose={closeModal}>
-          <h3>Assessment Details:</h3>
-          <p>Assessment Title: {assessmentDetails.assessment_title}</p>
-          <p>Duration: {assessmentDetails.duration} minutes</p>
-          <p>Question: {assessmentDetails.question}</p>
-          <input type="text" />
-          <button type="submit" onClick={handleSubmitAssessment}>Submit Assessment</button>
-          <button onClick={closeModal}>Close</button>
+        <Modal  isOpen={isModalOpen} onClose={closeModal}>
+          <h3 className='assessment-details'>Assessment Details:</h3>
+          <p className='assessment-title'>Assessment Title:</p>
+          <p className='the-title'> {assessmentDetails.assessment_title}</p>
+          <p className='assessment-title'>Duration: </p>
+          <p className='the-title'>{assessmentDetails.duration} minutes</p>
+          <p className='assessment-title'>Question:</p>
+          <p className='the-title'> {assessmentDetails.question}</p>
+          <textarea className='answer'
+          name="answer"  
+          cols="30" 
+          rows="10"></textarea>
+          <button className='assessment-submit' type="submit" onClick={handleSubmitAssessment}>Submit Assessment</button>
+          <button className='assessment-submit' onClick={closeModal}>Close</button>
         </Modal>
       )}
       </div>

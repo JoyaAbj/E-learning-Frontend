@@ -14,7 +14,7 @@ const Dashassessment = () => {
   const [question, setQuestion] = useState('');
   const [editAssessment, setEditAssessment] = useState(null);
   const [assessmentUpdatedMessage, setAssessmentUpdatedMessage] = useState('');
-
+  const url = process.env.REACT_APP_API_URL;
   const handleAssessmentClick = (assessment) => {
     setSelectedLesson(assessment);
     setEditAssessment(assessment);
@@ -25,7 +25,7 @@ const Dashassessment = () => {
 
   useEffect(() => {
     // Fetch levels when the component mounts
-    axios.get(`http://localhost:5000/levels/getBylanguage/${localStorage.getItem('language_id')}`)
+    axios.get(`${url}/levels/getBylanguage/${localStorage.getItem('language_id')}`)
       .then(response => {
         setLevels(response.data.data);
       })
@@ -37,7 +37,7 @@ const Dashassessment = () => {
   useEffect(() => {
     if (selectedLevel) {
       // Fetch lessons when the selectedLevel changes
-      axios.get(`http://localhost:5000/lessons/getByLevel/${selectedLevel}`)
+      axios.get(`${url}/lessons/getByLevel/${selectedLevel}`)
         .then(response => {
           setLessons(response.data.data);
         })
@@ -61,7 +61,7 @@ const Dashassessment = () => {
   useEffect(() => {
     if (selectedLevel&&selectedLesson) {
       // Fetch lessons when the selectedLevel changes
-      axios.get(`http://localhost:5000/assessment/getbylesson/${selectedLesson}`)
+      axios.get(`${url}/assessment/getbylesson/${selectedLesson}`)
         .then(response => {
           setAssessments(response.data.data);
         })
@@ -75,7 +75,7 @@ const Dashassessment = () => {
     const confirmDelete = window.confirm("Are you sure you want to delete this assessment?");
     if (confirmDelete)
     axios
-      .delete(`http://localhost:5000/assessment/delete/${assessmentId}`)
+      .delete(`${url}/assessment/delete/${assessmentId}`)
       .then((response) => {
         if (response.status === 204) {
           // Handle successful deletion, e.g., updating the UI
@@ -97,7 +97,7 @@ const Dashassessment = () => {
       lesson_id: selectedLesson,
     };
 
-    axios.post('http://localhost:5000/assessment/add', newAssessment)
+    axios.post(`${url}/assessment/add`, newAssessment)
       .then(response => {
         console.log('Assessment added successfully');
         setAssessmentAddedMessage('Assessment added successfully');
@@ -111,7 +111,7 @@ const Dashassessment = () => {
   };
 
   const handleSaveAssessment = () => {
-    axios.put(`http://localhost:5000/assessment/update/${editAssessment.assessment_id}`, editAssessment)
+    axios.put(`${url}/assessment/update/${editAssessment.assessment_id}`, editAssessment)
       .then(response => {
         console.log('Assessment updated successfully');
         setAssessmentUpdatedMessage('Assessment updated successfully');

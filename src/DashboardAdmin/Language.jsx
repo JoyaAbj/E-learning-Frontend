@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../CSS/AdminDashboard.css';
 
 const Language = () => {
     const [language_name, setLanguageName] = useState('');
@@ -13,7 +14,7 @@ const Language = () => {
     const [selectedLanguage, setSelectedLanguage] = useState('');
     const [assignSuccessMessage, setAssignSuccessMessage] = useState('');
     const [assignErrorMessage, setAssignErrorMessage] = useState('');
-
+    const url = process.env.REACT_APP_API_URL;
     useEffect(() => {
         fetchAvailableLanguages();
         fetchTeachers();
@@ -21,7 +22,7 @@ const Language = () => {
 
     const fetchAvailableLanguages = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/languages/newLanguage');
+            const response = await axios.get(`${url}/languages/newLanguage`);
             setAvailableLanguages(response.data);
         } catch (error) {
             console.error('Error fetching available languages:', error);
@@ -30,7 +31,7 @@ const Language = () => {
 
     const fetchTeachers = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/users/getAll/teacher');
+            const response = await axios.get(`${url}/users/getAll/teacher`);
             if (Array.isArray(response.data.data)) {
                 setTeachers(response.data.data);
             } else {
@@ -48,8 +49,9 @@ const Language = () => {
             formData.append('language_name', language_name);
             formData.append('image', language_img);
 
-            const response = await axios.post('http://localhost:5000/languages/add', formData);
+            const response = await axios.post(`${url}/languages/add`, formData);
             console.log(response.data);
+       
 
             setLanguageName('');
             setLanguageImage(null);
@@ -62,11 +64,13 @@ const Language = () => {
 
             setSuccessMessage('The language was added successfully.');
             setErrorMessage('');
+            setTimeout(() => setSuccessMessage(''), 5000);
         } catch (error) {
             console.error('Error adding language:', error);
 
             setErrorMessage('Error adding the language. Please try again.');
             setSuccessMessage('');
+            setTimeout(() => setErrorMessage(''), 5000);
         }
     };
 
@@ -78,7 +82,7 @@ const Language = () => {
 
             console.log(language_id);
             try {
-                const response = await axios.put(`http://localhost:5000/languages/assign/${selectedTeacher}/${language_id}`);
+                const response = await axios.put(`${url}/languages/assign/${selectedTeacher}/${language_id}`);
 
                 console.log(response.data);
                 if (response.data) {
@@ -87,6 +91,9 @@ const Language = () => {
                     setSelectedLanguage('');
                     setSelectedTeacher('');
                     fetchAvailableLanguages();
+
+                    setTimeout(() => setAssignSuccessMessage(''), 5000);
+                    setTimeout(() => setAssignErrorMessage(''), 5000);
                 } else {
                     setAssignErrorMessage('Error assigning the language to the teacher. Please try again');
                     setAssignSuccessMessage('');
@@ -95,9 +102,11 @@ const Language = () => {
                 console.error('Error assigning language:', error);
                 setAssignErrorMessage('Error assigning the language to the teacher. Please try again');
                 setAssignSuccessMessage('');
+                setTimeout(() => setAssignErrorMessage(''), 5000);
             }
         } else {
             setAssignErrorMessage('Please select a language and a teacher before assigning');
+            setTimeout(() => setAssignErrorMessage(''), 5000);
         }
     };
 
@@ -113,17 +122,19 @@ const Language = () => {
 
     const handleRemoveLanguage = async (languageId) => {
         try {
-            const response = await axios.delete(`http://localhost:5000/languages/delete/${languageId}`);
+            const response = await axios.delete(`${url}/languages/delete/${languageId}`);
             console.log(response.data);
             fetchAvailableLanguages();
 
             setSuccessMessage('The language was removed successfully.');
             setErrorMessage('');
+            setTimeout(() => setErrorMessage(''), 5000);
         } catch (error) {
             console.error('Error removing language:', error);
 
             setErrorMessage('Error removing the language. Please try again.');
             setSuccessMessage('');
+            setTimeout(() => setErrorMessage(''), 5000);
         }
     };
 
@@ -150,8 +161,8 @@ const Language = () => {
                 </button>
             </div>
 
-            {successMessage && <p style={{ color: 'black', textAlign: 'center' }}>{successMessage}</p>}
-            {errorMessage && <p style={{ color: 'black', textAlign: 'center' }}>{errorMessage}</p>}
+            {successMessage && <p style={{ color: 'black', textAlign: 'center', marginLeft: '120px' }}>{successMessage}</p>}
+            {errorMessage && <p style={{ color: 'black', textAlign: 'center', marginLeft: '120px' }}>{errorMessage}</p>}
 
             <h2 className='users-admin'>Assign Language</h2>
             <div className='language-dashboard1'>
@@ -185,11 +196,11 @@ const Language = () => {
                 </button>
             </div>
 
-            {assignSuccessMessage && <p style={{ color: 'black', textAlign: 'center' }}>{assignSuccessMessage}</p>}
-            {assignErrorMessage && <p style={{ color: 'black', textAlign: 'center' }}>{assignErrorMessage}</p>}
+            {assignSuccessMessage && <p style={{ color: 'black', textAlign: 'center', marginLeft: '120px' }}>{assignSuccessMessage}</p>}
+            {assignErrorMessage && <p style={{ color: 'black', textAlign: 'center', marginLeft: '120px' }}>{assignErrorMessage}</p>}
 
             <h2 className='users-admin'>Languages</h2>
-            <table className='admin-table'>
+            <table className='Available-language-table'>
                 <thead className="admin-thead">
                     <tr>
                         <th className='language-table'>Language Name</th>

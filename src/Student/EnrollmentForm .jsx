@@ -13,10 +13,10 @@ function EnrollmentForm({ userId }) {
   const [selectedLanguage, setSelectedLanguage] = useState('');
   const [selectedLevel, setSelectedLevel] = useState('');
   // const [levelId, setLevelId] = useState('');
-
+  const url = process.env.REACT_APP_API_URL;
   useEffect(() => {
    // Fetch available languages and populate the language dropdown
-axios.get('http://localhost:5000/enroll/get/languages')
+axios.get(`${url}/enroll/get/languages`)
 .then((response) => {
   setLanguages(response.data.languages);
 })
@@ -30,7 +30,7 @@ axios.get('http://localhost:5000/enroll/get/languages')
     setSelectedLanguage(selectedLanguageId);
 
 // Fetch available levels for the selected language and populate the level dropdown
-axios.get(`http://localhost:5000/enroll/get/levels?language_id=${selectedLanguageId}`)
+axios.get(`${url}/enroll/get/levels?language_id=${selectedLanguageId}`)
   .then((response) => {
     setLevels(response.data.levels);
     // setLevelId(response.data.levels[0].level_id)
@@ -49,7 +49,7 @@ console.log(selectedLevel)
       }
       console.log(req)
       // Send a POST request to the backend API to enroll the student
-      fetch('http://localhost:5000/enroll/add/enroll', {
+      fetch(`${url}/enroll/add/enroll`, {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
