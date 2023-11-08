@@ -191,8 +191,8 @@ const handleLanguageChange = (event) => {
   return (
     <div className='start-learning-div'>
       <div className="chooselanguage">
-      < h2 className='courstud'>My courses</h2>
       <div className='choose-lesson'>
+      < h2 className='courstud'>My courses</h2>
       <label htmlFor="language" className='langstud'>Select Language:</label>
       <select id="language" name="language" className='selectlangstud' value={selectedLanguage} onChange={handleLanguageChange}>
         <option value="" >Select a Language</option>
@@ -212,22 +212,23 @@ const handleLanguageChange = (event) => {
           </option>
         ))}
       </select>
-      <button onClick={handleStartLearning}>Start Learning</button>
+      <button className='start-assessment-student' onClick={handleStartLearning}>Start Learning</button>
+      </div>
       {lessons.length > 0 && (
-    <div>
-      <h3>Available Lessons:</h3>
+    <div >
+      <h3 className='courstud'>Available Lessons:</h3>
       <ul>
         {selectedLesson && (
           <li key={selectedLesson.lesson_id}>
-            <h4>{selectedLesson.lesson_name}</h4>
-            <ul>
+            <h4 className='lesson-name-student'>{selectedLesson.lesson_name}</h4>
+            <h4 className='lesson-name-student'>{selectedLesson.overview}</h4>
               {selectedLesson.content.split(',').map((item, index) => (
                 <li key={index}>{item.trim()}</li>
               ))}
-            </ul>
-            <button onClick={() => handleStartAssessment(selectedLesson.lesson_id)}>Start Assessment</button>
+           
+            <button className='start-assessment-student' onClick={() => handleStartAssessment(selectedLesson.lesson_id)}>Start Assessment</button>
             {/* <button onClick={() => handleJoinLesson(selectedLesson.lesson_id)}>Join</button> */}
-            <button
+            <button className='start-assessment-student'
                onClick={() => handleJoinLesson(selectedLesson.lesson_id)}
                  disabled={joinedLessons.includes(selectedLesson.lesson_id)}
                  >
@@ -267,7 +268,7 @@ const handleLanguageChange = (event) => {
       )}
       </div>
 
-</div>
+
     </div>
   );
 }
