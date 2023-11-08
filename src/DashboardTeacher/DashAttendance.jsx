@@ -65,10 +65,10 @@ function DashAttendance() {
   }, [selectedLesson]);
   return (
     <div>
-      <h1>Teacher Dashboard</h1>
-
+      <h1 className='attendance-teacher'>Attendance</h1>
+<div className="select-attendance">
       {/* Language Selector */}
-      <select value={selectedLanguage} onChange={(e) => setSelectedLanguage(e.target.value)}>
+      <select className='dropdown-level' value={selectedLanguage} onChange={(e) => setSelectedLanguage(e.target.value)}>
         <option value="">Select Language</option>
         { languages.map((language) => (
           <option key={language.language_id} value={language.language_id}>
@@ -79,7 +79,7 @@ function DashAttendance() {
 
       {/* Level Selector */}
       {selectedLanguage && (  // Conditionally render the Level Selector
-        <select value={selectedLevel} onChange={(e) => setSelectedLevel(e.target.value)}>
+        <select className='dropdown-level' value={selectedLevel} onChange={(e) => setSelectedLevel(e.target.value)}>
           <option value="">Select Level</option>
           {levels.map((level) => (
             <option key={level.level_id} value={level.level_id}>
@@ -91,7 +91,7 @@ function DashAttendance() {
 
       {/* Lesson Selector */}
       {selectedLevel && (  // Conditionally render the Lesson Selector
-        <select value={selectedLesson} onChange={(e) => setSelectedLesson(e.target.value)}>
+        <select className='dropdown-level' value={selectedLesson} onChange={(e) => setSelectedLesson(e.target.value)}>
           <option value="">Select Lesson</option>
           {lessons.map((lesson) => (
             <option key={lesson.lesson_id} value={lesson.lesson_id}>
@@ -100,12 +100,13 @@ function DashAttendance() {
           ))}
         </select>
       )}
+      </div>
 
       {/* Attendance List */}
       {selectedLesson && (  // Conditionally render the Attendance List
         <ul>
           {attendance.map((record) => (
-            <li key={record.user_id}>
+            <li className='list-attendance' key={record.user_id}>
               {record.student_name} - {record.attendance_day}
             </li>
           ))}

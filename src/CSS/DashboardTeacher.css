@@ -213,3 +213,12 @@ cursor: pointer;
     justify-content: space-evenly;
     align-items: center;
 }
+.select-attendance{
+    display: flex;
+    justify-content: space-evenly;
+}
+.list-attendance{
+    color: #4853CD;
+    font-weight: 600;
+    margin: 2%;
+}
