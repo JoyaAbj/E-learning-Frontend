@@ -9,7 +9,6 @@ const CreateUser = () => {
     const [signupRole, setSignupRole] = useState('');
 
     const handleSignup = () => {
-
         if (!signupEmail || !signupPassword || !confirmPassword || !name || !signupRole) {
             setMessage('Please fill in all fields!');
             return;
@@ -32,13 +31,19 @@ const CreateUser = () => {
                 if (data.message) {
                     setMessage(data.message);
                 } else {
-                    setMessage('User created Successfully!.');
+                    setMessage('User created Successfully!');
+                    setConfirmPassword('');
+                    setName('');
+                    setSignupEmail('');
+                    setSignupPassword('');
+                    setSignupRole('');
                 }
             })
             .catch((error) => {
                 console.error('Error:', error);
             });
     };
+
     return (
         <div className="create-user">
             <h2 className="create-user-title">Add User</h2>

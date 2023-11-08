@@ -63,11 +63,13 @@ const Language = () => {
 
             setSuccessMessage('The language was added successfully.');
             setErrorMessage('');
+            setTimeout(() => setSuccessMessage(''), 30000);
         } catch (error) {
             console.error('Error adding language:', error);
 
             setErrorMessage('Error adding the language. Please try again.');
             setSuccessMessage('');
+            setTimeout(() => setErrorMessage(''), 30000);
         }
     };
 
@@ -88,6 +90,9 @@ const Language = () => {
                     setSelectedLanguage('');
                     setSelectedTeacher('');
                     fetchAvailableLanguages();
+
+                    setTimeout(() => setAssignSuccessMessage(''), 30000);
+                    setTimeout(() => setAssignErrorMessage(''), 30000);
                 } else {
                     setAssignErrorMessage('Error assigning the language to the teacher. Please try again');
                     setAssignSuccessMessage('');
@@ -96,9 +101,11 @@ const Language = () => {
                 console.error('Error assigning language:', error);
                 setAssignErrorMessage('Error assigning the language to the teacher. Please try again');
                 setAssignSuccessMessage('');
+                setTimeout(() => setAssignErrorMessage(''), 30000);
             }
         } else {
             setAssignErrorMessage('Please select a language and a teacher before assigning');
+            setTimeout(() => setAssignErrorMessage(''), 30000);
         }
     };
 
@@ -120,11 +127,13 @@ const Language = () => {
 
             setSuccessMessage('The language was removed successfully.');
             setErrorMessage('');
+            setTimeout(() => setErrorMessage(''), 30000);
         } catch (error) {
             console.error('Error removing language:', error);
 
             setErrorMessage('Error removing the language. Please try again.');
             setSuccessMessage('');
+            setTimeout(() => setErrorMessage(''), 30000);
         }
     };
 
@@ -190,7 +199,7 @@ const Language = () => {
             {assignErrorMessage && <p style={{ color: 'black', textAlign: 'center' }}>{assignErrorMessage}</p>}
 
             <h2 className='users-admin'>Languages</h2>
-            <table className='admin-table'>
+            <table className='Available-language-table'>
                 <thead className="admin-thead">
                     <tr>
                         <th className='language-table'>Language Name</th>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../CSS/AdminDashboard.css'
+import '../CSS/AdminDashboard.css';
 
-const UserTable = ({ users, role }) => {
+const UserTable = ({ users, role, onDeleteSuccess, onUpdateSuccess }) => {
   const [editUserId, setEditUserId] = useState(null);
   const [updatedUserData, setUpdatedUserData] = useState({ id: '', name: '', email: '' });
 
@@ -11,6 +11,7 @@ const UserTable = ({ users, role }) => {
       .delete(`http://localhost:5000/users/delete/${id}`, { params: { role } })
       .then((response) => {
         console.log('User deleted successfully');
+        onDeleteSuccess();
       })
       .catch((error) => {
         console.error('Error deleting user', error);
@@ -26,6 +27,7 @@ const UserTable = ({ users, role }) => {
         .then((response) => {
           console.log('User updated successfully');
           setEditUserId(null);
+          onUpdateSuccess();
         })
         .catch((error) => {
           console.error('Error updating user', error);
@@ -94,12 +96,24 @@ const UserTable = ({ users, role }) => {
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
   const [role, setRole] = useState('student');
+  const [deleteSuccessMessage, setDeleteSuccessMessage] = useState('');
+  const [updateSuccessMessage, setUpdateSuccessMessage] = useState('');
+
+  const onDeleteSuccess = () => {
+    setDeleteSuccessMessage('User deleted successfully');
+    setTimeout(() => setDeleteSuccessMessage(''), 30000);
+  };
+
+  const onUpdateSuccess = () => {
+    setUpdateSuccessMessage('User updated successfully');
+    setTimeout(() => setUpdateSuccessMessage(''), 30000);
+  };
 
   const fetchUsersByRole = async (role, usersState) => {
     try {
       const response = await axios.get(`http://localhost:5000/users/getAll/${role}`);
       const users = response.data.data;
-      console.log(response.data.data)
+      console.log(response.data.data);
       usersState(users);
       return users;
     } catch (error) {
@@ -114,13 +128,23 @@ const AllUsers = () => {
 
   return (
     <div>
-      <h1 className='users-admin'>Users</h1>
-      <select className='select-users-admin' value={role} onChange={(e) => setRole(e.target.value)}>
+      <h1 className="users-admin">All Users</h1>
+      <select className="select-users-admin" value={role} onChange={(e) => setRole(e.target.value)}>
         <option value="student">Students</option>
         <option value="teacher">Teachers</option>
         <option value="admin">Admins</option>
       </select>
-      <UserTable users={users} role={role} />
+      {deleteSuccessMessage && (
+        <p className="success-message" style={{ textAlign: 'center' }}>
+          {deleteSuccessMessage}
+        </p>
+      )}
+      {updateSuccessMessage && (
+        <p className="success-message" style={{ textAlign: 'center' }}>
+          {updateSuccessMessage}
+        </p>
+      )}
+      <UserTable users={users} role={role} onDeleteSuccess={onDeleteSuccess} onUpdateSuccess={onUpdateSuccess} />
     </div>
   );
 };
