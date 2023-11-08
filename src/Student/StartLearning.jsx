@@ -183,7 +183,10 @@ const handleLanguageChange = (event) => {
               <li key={selectedLesson.lesson_id}>
                 <h4 className='lesson-name-student'>{selectedLesson.lesson_name}</h4>
                 <h4>{selectedLesson.overview}</h4>
-                <p>{selectedLesson.content}</p>
+                {selectedLesson.content.split(',').map((part, index) => (
+                      <p key={index}>{part}</p>
+                    ))}
+                
                 <button className='start-assessment-student' onClick={() => handleStartAssessment(selectedLesson.lesson_id)}>Start Assessment</button>
               </li>
             )}
@@ -201,14 +204,20 @@ const handleLanguageChange = (event) => {
       )}
 
       {isModalOpen && assessmentDetails && (
-        <Modal isOpen={isModalOpen} onClose={closeModal}>
-          <h3>Assessment Details:</h3>
-          <p>Assessment Title: {assessmentDetails.assessment_title}</p>
-          <p>Duration: {assessmentDetails.duration} minutes</p>
-          <p>Question: {assessmentDetails.question}</p>
-          <input type="text" />
-          <button type="submit" onClick={handleSubmitAssessment}>Submit Assessment</button>
-          <button onClick={closeModal}>Close</button>
+        <Modal  isOpen={isModalOpen} onClose={closeModal}>
+          <h3 className='assessment-details'>Assessment Details:</h3>
+          <p className='assessment-title'>Assessment Title:</p>
+          <p className='the-title'> {assessmentDetails.assessment_title}</p>
+          <p className='assessment-title'>Duration: </p>
+          <p className='the-title'>{assessmentDetails.duration} minutes</p>
+          <p className='assessment-title'>Question:</p>
+          <p className='the-title'> {assessmentDetails.question}</p>
+          <textarea className='answer'
+          name="answer"  
+          cols="30" 
+          rows="10"></textarea>
+          <button className='assessment-submit' type="submit" onClick={handleSubmitAssessment}>Submit Assessment</button>
+          <button className='assessment-submit' onClick={closeModal}>Close</button>
         </Modal>
       )}
       </div>
